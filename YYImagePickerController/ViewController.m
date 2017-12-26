@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MJAlbumsController.h"
 
 @interface ViewController ()
 
@@ -19,11 +20,14 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)push:(id)sender {
+    
+    MJAlbumsController *vc = [[MJAlbumsController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
+
+
 
 
 @end

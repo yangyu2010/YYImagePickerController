@@ -13,6 +13,10 @@
 		868FC5641FF25FE9002A0FC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868FC5631FF25FE9002A0FC8 /* Assets.xcassets */; };
 		868FC5671FF25FE9002A0FC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 868FC5651FF25FE9002A0FC8 /* LaunchScreen.storyboard */; };
 		868FC56A1FF25FE9002A0FC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5691FF25FE9002A0FC8 /* main.m */; };
+		868FC5791FF260C1002A0FC8 /* MJAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5721FF260C1002A0FC8 /* MJAssetModel.m */; };
+		868FC57A1FF260C1002A0FC8 /* MJAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5741FF260C1002A0FC8 /* MJAlbumsController.m */; };
+		868FC57B1FF260C1002A0FC8 /* MJAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5751FF260C1002A0FC8 /* MJAlbumModel.m */; };
+		868FC57C1FF260C1002A0FC8 /* MJImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5781FF260C1002A0FC8 /* MJImageManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,14 @@
 		868FC5661FF25FE9002A0FC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		868FC5681FF25FE9002A0FC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		868FC5691FF25FE9002A0FC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		868FC5711FF260C1002A0FC8 /* MJAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAlbumModel.h; sourceTree = "<group>"; };
+		868FC5721FF260C1002A0FC8 /* MJAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAssetModel.m; sourceTree = "<group>"; };
+		868FC5731FF260C1002A0FC8 /* MJImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJImageManager.h; sourceTree = "<group>"; };
+		868FC5741FF260C1002A0FC8 /* MJAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAlbumsController.m; sourceTree = "<group>"; };
+		868FC5751FF260C1002A0FC8 /* MJAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAlbumModel.m; sourceTree = "<group>"; };
+		868FC5761FF260C1002A0FC8 /* MJAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAssetModel.h; sourceTree = "<group>"; };
+		868FC5771FF260C1002A0FC8 /* MJAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAlbumsController.h; sourceTree = "<group>"; };
+		868FC5781FF260C1002A0FC8 /* MJImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJImageManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 		868FC5591FF25FE9002A0FC8 /* YYImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
+				868FC5701FF260C1002A0FC8 /* Classes */,
 				868FC55A1FF25FE9002A0FC8 /* AppDelegate.h */,
 				868FC55B1FF25FE9002A0FC8 /* AppDelegate.m */,
 				868FC55D1FF25FE9002A0FC8 /* ViewController.h */,
@@ -69,6 +82,21 @@
 				868FC5691FF25FE9002A0FC8 /* main.m */,
 			);
 			path = YYImagePickerController;
+			sourceTree = "<group>";
+		};
+		868FC5701FF260C1002A0FC8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				868FC5711FF260C1002A0FC8 /* MJAlbumModel.h */,
+				868FC5721FF260C1002A0FC8 /* MJAssetModel.m */,
+				868FC5731FF260C1002A0FC8 /* MJImageManager.h */,
+				868FC5741FF260C1002A0FC8 /* MJAlbumsController.m */,
+				868FC5751FF260C1002A0FC8 /* MJAlbumModel.m */,
+				868FC5761FF260C1002A0FC8 /* MJAssetModel.h */,
+				868FC5771FF260C1002A0FC8 /* MJAlbumsController.h */,
+				868FC5781FF260C1002A0FC8 /* MJImageManager.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,8 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				868FC57C1FF260C1002A0FC8 /* MJImageManager.m in Sources */,
 				868FC55F1FF25FE9002A0FC8 /* ViewController.m in Sources */,
+				868FC5791FF260C1002A0FC8 /* MJAssetModel.m in Sources */,
+				868FC57A1FF260C1002A0FC8 /* MJAlbumsController.m in Sources */,
 				868FC56A1FF25FE9002A0FC8 /* main.m in Sources */,
+				868FC57B1FF260C1002A0FC8 /* MJAlbumModel.m in Sources */,
 				868FC55C1FF25FE9002A0FC8 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
