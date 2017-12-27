@@ -34,7 +34,10 @@
 #pragma mark- Data
 
 - (void)dataConfig {
-    [MJImageManager getAllAlbumsCompletion:^(NSArray<MJAlbumModel *> *arrAlbums) {
+    
+    [[MJImageManager defaultManager] authorizationStatusAuthorized];
+    
+    [[MJImageManager defaultManager] getAllAlbumsCompletion:^(NSArray<MJAlbumModel *> *arrAlbums) {
         _arrAlbums = arrAlbums;
         [_tableAlbums reloadData];
     }];

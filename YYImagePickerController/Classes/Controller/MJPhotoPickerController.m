@@ -10,7 +10,11 @@
 #import "PhotoCollectionCell.h"
 #import "MJImageManager.h"
 
-#define kPhotoCollectionCellID  @"PhotoCollectionCell.h"
+#define kPhotoCollectionCellID      @"PhotoCollectionCell.h"
+
+#define kPhotoCollectionRowCount    4
+
+#define kPhotoCollectionCellMargin  5.0f
 
 @interface MJPhotoPickerController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -33,7 +37,8 @@
 
 - (void)dataConfig {
    
-    [MJImageManager getAssetFromAlbum:_modelAlbum completion:^(NSArray<MJAssetModel *> *arrAssets) {
+    [[MJImageManager defaultManager] getAssetFromAlbum:_modelAlbum completion:^(NSArray<MJAssetModel *> *arrAssets) {
+        
         _arrAssets = arrAssets;
         
         [self.collectionPhoto reloadData];
@@ -52,6 +57,7 @@
     _collectionPhoto.delegate = self;
     _collectionPhoto.dataSource = self;
     [self.view addSubview:_collectionPhoto];
+    _collectionPhoto.contentInset = UIEdgeInsetsMake(kPhotoCollectionCellMargin, kPhotoCollectionCellMargin, kPhotoCollectionCellMargin, kPhotoCollectionCellMargin);
     
     [_collectionPhoto registerClass:[PhotoCollectionCell class] forCellWithReuseIdentifier:kPhotoCollectionCellID];
 }
@@ -63,10 +69,10 @@
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)_collectionPhoto.collectionViewLayout;
     
-    layout.minimumLineSpacing = 0.0;
-    layout.minimumInteritemSpacing = 0.0;
+    layout.minimumLineSpacing = kPhotoCollectionCellMargin;
+    layout.minimumInteritemSpacing = kPhotoCollectionCellMargin;
     
-    CGFloat wh = self.view.bounds.size.width / 4.0;
+    CGFloat wh = (self.view.bounds.size.width - (kPhotoCollectionRowCount + 1) * kPhotoCollectionCellMargin) / kPhotoCollectionRowCount;
     layout.itemSize = CGSizeMake(wh, wh);
     
 }

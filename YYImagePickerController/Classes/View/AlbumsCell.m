@@ -82,7 +82,7 @@
     self.lblSelectedCount.hidden = (model.selectedCount == 0);
     self.lblSelectedCount.text = [NSString stringWithFormat:@"%ld", model.selectedCount];
     
-    [MJImageManager getPostImageWithAlbumModel:model completion:^(UIImage *image) {
+    [[MJImageManager defaultManager] getPostImageWithAlbumModel:model completion:^(UIImage *image) {
         self.imgViewPoster.image = image;
     }];
 }
@@ -104,6 +104,7 @@
         _lblTitle.font = [UIFont boldSystemFontOfSize:17];
         _lblTitle.textColor = [UIColor blackColor];
         _lblTitle.textAlignment = NSTextAlignmentLeft;
+        _lblTitle.numberOfLines = 2;
     }
     return _lblTitle;
 }

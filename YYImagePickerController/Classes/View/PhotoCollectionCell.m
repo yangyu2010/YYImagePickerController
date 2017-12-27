@@ -53,9 +53,7 @@
 - (void)setModel:(MJAssetModel *)model {
     _model = model;
     
-//    NSLog(@"size.width %f", self.contentView.bounds.size.width);
-    
-    [MJImageManager getPhotoWithAssetModel:model photoWidth:self.contentView.bounds.size.width completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
+    [[MJImageManager defaultManager] getPhotoWithAsset:model.asset photoWidth:self.contentView.bounds.size.width completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
         if (photo) {
             self.imgViewPhoto.image = photo;
         }
