@@ -77,10 +77,21 @@
     
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    [self actionCollectionViewScrollBottom];
+}
 
 #pragma mark- Action
 - (void)actionCancle {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+/// 滚到最底部
+- (void)actionCollectionViewScrollBottom {
+    
+    [_collectionPhoto scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_arrAssets.count - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
 }
 
 #pragma mark- DataSource
