@@ -23,7 +23,9 @@
 - (IBAction)push:(id)sender {
     
     MJAlbumsController *vc = [[MJAlbumsController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
+//    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

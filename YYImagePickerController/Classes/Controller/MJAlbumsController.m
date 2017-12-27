@@ -9,6 +9,7 @@
 #import "MJAlbumsController.h"
 #import "MJImageManager.h"
 #import "AlbumsCell.h"
+#import "MJPhotoPickerController.h"
 
 #define kAlbumsTableCellID    @"kMJAlbumsTableCellID"
 
@@ -16,9 +17,7 @@
 
 @property (nonatomic, strong) UITableView *tableAlbums;
 
-
 @property (nonatomic, strong) NSArray *arrAlbums;
-
 
 @end
 
@@ -27,6 +26,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self viewConfig];
+    [self dataConfig];
+    
+}
+
+#pragma mark- Data
+
+- (void)dataConfig {
+    [MJImageManager getAllAlbumsCompletion:^(NSArray<MJAlbumModel *> *arrAlbums) {
+        _arrAlbums = arrAlbums;
+        [_tableAlbums reloadData];
+    }];
+}
+
+#pragma mark- View
+
+- (void)viewConfig {
     _tableAlbums = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableAlbums.backgroundColor = [UIColor whiteColor];
     _tableAlbums.delegate = self;
@@ -36,10 +52,7 @@
     [_tableAlbums registerClass:[AlbumsCell class] forCellReuseIdentifier:kAlbumsTableCellID];
     [self.view addSubview:_tableAlbums];
     
-    [MJImageManager getAllAlbumsCompletion:^(NSArray<MJAlbumModel *> *arrAlbums) {
-        _arrAlbums = arrAlbums;
-        [_tableAlbums reloadData];
-    }];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancle" style:UIBarButtonItemStyleDone target:self action:@selector(actionCancle)];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -47,6 +60,13 @@
     
     _tableAlbums.frame = self.view.bounds;
 }
+
+#pragma mark- Action
+- (void)actionCancle {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark- DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _arrAlbums.count;
@@ -58,8 +78,19 @@
     return cell;
 }
 
+#pragma mark- Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MJPhotoPickerController *picker = [[MJPhotoPickerController alloc] init];
+    picker.modelAlbum = _arrAlbums[indexPath.item];
+    [self.navigationController pushViewController:picker animated:YES];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80;
 }
+
+
 
 @end

@@ -20,4 +20,6 @@
 
 + (void)getPostImageWithAlbumModel:(MJAlbumModel *)model completion:(void (^)(UIImage *image))completion;
 
++ (int32_t)getPhotoWithAssetModel:(MJAssetModel *)model photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *photo,NSDictionary *info,BOOL isDegraded))completion;
+
 @end

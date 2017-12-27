@@ -19,6 +19,8 @@
 		86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D941FF33898000DAFB3 /* MJAlbumsController.m */; };
 		86905D9D1FF338C3000DAFB3 /* AlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */; };
 		86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */; };
+		86905DA41FF34CD7000DAFB3 /* MJPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA31FF34CD7000DAFB3 /* MJPhotoPickerController.m */; };
+		86905DA71FF37759000DAFB3 /* PhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA61FF37759000DAFB3 /* PhotoCollectionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,10 @@
 		86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumsCell.m; sourceTree = "<group>"; };
 		86905D9F1FF33DFB000DAFB3 /* UIView+Sugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sugar.h"; sourceTree = "<group>"; };
 		86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sugar.m"; sourceTree = "<group>"; };
+		86905DA21FF34CD7000DAFB3 /* MJPhotoPickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPhotoPickerController.h; sourceTree = "<group>"; };
+		86905DA31FF34CD7000DAFB3 /* MJPhotoPickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPhotoPickerController.m; sourceTree = "<group>"; };
+		86905DA51FF37759000DAFB3 /* PhotoCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionCell.h; sourceTree = "<group>"; };
+		86905DA61FF37759000DAFB3 /* PhotoCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				86905D8F1FF33898000DAFB3 /* MJAlbumModel.h */,
-				86905D901FF33898000DAFB3 /* MJAssetModel.m */,
 				86905D911FF33898000DAFB3 /* MJAlbumModel.m */,
 				86905D921FF33898000DAFB3 /* MJAssetModel.h */,
+				86905D901FF33898000DAFB3 /* MJAssetModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,6 +133,8 @@
 			children = (
 				86905D951FF33898000DAFB3 /* MJAlbumsController.h */,
 				86905D941FF33898000DAFB3 /* MJAlbumsController.m */,
+				86905DA21FF34CD7000DAFB3 /* MJPhotoPickerController.h */,
+				86905DA31FF34CD7000DAFB3 /* MJPhotoPickerController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -136,6 +144,8 @@
 			children = (
 				86905D9B1FF338C3000DAFB3 /* AlbumsCell.h */,
 				86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */,
+				86905DA51FF37759000DAFB3 /* PhotoCollectionCell.h */,
+				86905DA61FF37759000DAFB3 /* PhotoCollectionCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,11 +234,13 @@
 				86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */,
 				86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */,
 				86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */,
+				86905DA71FF37759000DAFB3 /* PhotoCollectionCell.m in Sources */,
 				86905D9D1FF338C3000DAFB3 /* AlbumsCell.m in Sources */,
 				868FC55F1FF25FE9002A0FC8 /* ViewController.m in Sources */,
 				868FC56A1FF25FE9002A0FC8 /* main.m in Sources */,
 				86905D991FF33898000DAFB3 /* MJAlbumModel.m in Sources */,
 				868FC55C1FF25FE9002A0FC8 /* AppDelegate.m in Sources */,
+				86905DA41FF34CD7000DAFB3 /* MJPhotoPickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

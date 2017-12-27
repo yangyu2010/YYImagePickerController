@@ -53,9 +53,9 @@
                 [arrAlbums addObject:[MJAlbumModel modelWithResult:fetchResult name:collection.localizedTitle]];
             }
             
-            NSLog(@"localizedTitle %@", collection.localizedTitle);
-            NSLog(@"count %ld", fetchResult.count);
-            NSLog(@"--------------");
+//            NSLog(@"localizedTitle %@", collection.localizedTitle);
+//            NSLog(@"count %ld", fetchResult.count);
+//            NSLog(@"--------------");
         }
     }
     
@@ -107,6 +107,27 @@
         }
     }];
     
+}
+
++ (int32_t)getPhotoWithAssetModel:(MJAssetModel *)model photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *photo,NSDictionary *info,BOOL isDegraded))completion {
+    
+    
+    PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
+    option.resizeMode = PHImageRequestOptionsResizeModeFast;
+    
+    [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:CGSizeMake(photoWidth, photoWidth) contentMode:PHImageContentModeAspectFill options:option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        
+                NSLog(@"name %ld", model.asset.pixelWidth);
+                NSLog(@"name %ld", model.asset.pixelHeight);
+                NSLog(@"result %@", result);
+                NSLog(@"------------------");
+        
+        if (completion) {
+            completion(result, info , [[info objectForKey:PHImageResultIsDegradedKey] boolValue]);
+        }
+    }];
+    
+    return 0;
 }
 
 @end
