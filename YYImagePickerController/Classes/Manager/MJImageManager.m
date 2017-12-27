@@ -98,10 +98,13 @@
     
     [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(80, 80) contentMode:PHImageContentModeAspectFill options:option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         
-        NSLog(@"result %@", result);
-        NSLog(@"info %@", info);
-        
-
+//        NSLog(@"name %@", model.name);
+//        NSLog(@"result %@", result);
+//        NSLog(@"------------------");
+//
+        if (completion) {
+            completion(result);
+        }
     }];
     
 }

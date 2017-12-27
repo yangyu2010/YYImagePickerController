@@ -8,6 +8,7 @@
 
 #import "MJAlbumsController.h"
 #import "MJImageManager.h"
+#import "AlbumsCell.h"
 
 #define kAlbumsTableCellID    @"kMJAlbumsTableCellID"
 
@@ -30,7 +31,9 @@
     _tableAlbums.backgroundColor = [UIColor whiteColor];
     _tableAlbums.delegate = self;
     _tableAlbums.dataSource = self;
-    [_tableAlbums registerClass:[UITableViewCell class] forCellReuseIdentifier:kAlbumsTableCellID];
+    /// 设置footerView后 没有数据了分割线会消失
+    _tableAlbums.tableFooterView = [[UIView alloc] init];
+    [_tableAlbums registerClass:[AlbumsCell class] forCellReuseIdentifier:kAlbumsTableCellID];
     [self.view addSubview:_tableAlbums];
     
     [MJImageManager getAllAlbumsCompletion:^(NSArray<MJAlbumModel *> *arrAlbums) {
@@ -50,14 +53,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAlbumsTableCellID forIndexPath:indexPath];
-    MJAlbumModel *model = _arrAlbums[indexPath.item];
-    
-    cell.textLabel.text = model.name;
-    cell.imageView.image = [UIImage imageNamed:@"default"];
-    
+    AlbumsCell *cell = [tableView dequeueReusableCellWithIdentifier:kAlbumsTableCellID forIndexPath:indexPath];
+    cell.model = _arrAlbums[indexPath.item];
     return cell;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -17,7 +17,7 @@
 /// 照片的个数
 @property (nonatomic, assign) NSInteger count;              ///< Count of photos the album contain
 /// 相簿封面, 取最后一张照片
-@property (nonatomic, strong) UIImage *albumIcon;
+//@property (nonatomic, strong) UIImage *albumIcon;
 /// 对应的result
 @property (nonatomic, strong) PHFetchResult *result;        ///< PHFetchResult <PHAsset>
 

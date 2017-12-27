@@ -26,9 +26,7 @@
     model.result = result;
     model.name = name;
     model.count = result.count;
-    [MJImageManager getPostImageWithAlbumModel:model completion:^(UIImage *image) {
-        model.albumIcon = image;
-    }];
+    model.selectedCount = 0;
     return model;
 }
 

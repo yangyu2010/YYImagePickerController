@@ -13,10 +13,12 @@
 		868FC5641FF25FE9002A0FC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868FC5631FF25FE9002A0FC8 /* Assets.xcassets */; };
 		868FC5671FF25FE9002A0FC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 868FC5651FF25FE9002A0FC8 /* LaunchScreen.storyboard */; };
 		868FC56A1FF25FE9002A0FC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5691FF25FE9002A0FC8 /* main.m */; };
-		868FC5791FF260C1002A0FC8 /* MJAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5721FF260C1002A0FC8 /* MJAssetModel.m */; };
-		868FC57A1FF260C1002A0FC8 /* MJAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5741FF260C1002A0FC8 /* MJAlbumsController.m */; };
-		868FC57B1FF260C1002A0FC8 /* MJAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5751FF260C1002A0FC8 /* MJAlbumModel.m */; };
-		868FC57C1FF260C1002A0FC8 /* MJImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC5781FF260C1002A0FC8 /* MJImageManager.m */; };
+		86905D971FF33898000DAFB3 /* MJImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D8D1FF33898000DAFB3 /* MJImageManager.m */; };
+		86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D901FF33898000DAFB3 /* MJAssetModel.m */; };
+		86905D991FF33898000DAFB3 /* MJAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D911FF33898000DAFB3 /* MJAlbumModel.m */; };
+		86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D941FF33898000DAFB3 /* MJAlbumsController.m */; };
+		86905D9D1FF338C3000DAFB3 /* AlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */; };
+		86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,14 +32,18 @@
 		868FC5661FF25FE9002A0FC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		868FC5681FF25FE9002A0FC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		868FC5691FF25FE9002A0FC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		868FC5711FF260C1002A0FC8 /* MJAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAlbumModel.h; sourceTree = "<group>"; };
-		868FC5721FF260C1002A0FC8 /* MJAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAssetModel.m; sourceTree = "<group>"; };
-		868FC5731FF260C1002A0FC8 /* MJImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJImageManager.h; sourceTree = "<group>"; };
-		868FC5741FF260C1002A0FC8 /* MJAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAlbumsController.m; sourceTree = "<group>"; };
-		868FC5751FF260C1002A0FC8 /* MJAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAlbumModel.m; sourceTree = "<group>"; };
-		868FC5761FF260C1002A0FC8 /* MJAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAssetModel.h; sourceTree = "<group>"; };
-		868FC5771FF260C1002A0FC8 /* MJAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAlbumsController.h; sourceTree = "<group>"; };
-		868FC5781FF260C1002A0FC8 /* MJImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJImageManager.m; sourceTree = "<group>"; };
+		86905D8C1FF33898000DAFB3 /* MJImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJImageManager.h; sourceTree = "<group>"; };
+		86905D8D1FF33898000DAFB3 /* MJImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJImageManager.m; sourceTree = "<group>"; };
+		86905D8F1FF33898000DAFB3 /* MJAlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAlbumModel.h; sourceTree = "<group>"; };
+		86905D901FF33898000DAFB3 /* MJAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAssetModel.m; sourceTree = "<group>"; };
+		86905D911FF33898000DAFB3 /* MJAlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAlbumModel.m; sourceTree = "<group>"; };
+		86905D921FF33898000DAFB3 /* MJAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAssetModel.h; sourceTree = "<group>"; };
+		86905D941FF33898000DAFB3 /* MJAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAlbumsController.m; sourceTree = "<group>"; };
+		86905D951FF33898000DAFB3 /* MJAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAlbumsController.h; sourceTree = "<group>"; };
+		86905D9B1FF338C3000DAFB3 /* AlbumsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumsCell.h; sourceTree = "<group>"; };
+		86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumsCell.m; sourceTree = "<group>"; };
+		86905D9F1FF33DFB000DAFB3 /* UIView+Sugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sugar.h"; sourceTree = "<group>"; };
+		86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sugar.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,16 +93,60 @@
 		868FC5701FF260C1002A0FC8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				868FC5711FF260C1002A0FC8 /* MJAlbumModel.h */,
-				868FC5721FF260C1002A0FC8 /* MJAssetModel.m */,
-				868FC5731FF260C1002A0FC8 /* MJImageManager.h */,
-				868FC5741FF260C1002A0FC8 /* MJAlbumsController.m */,
-				868FC5751FF260C1002A0FC8 /* MJAlbumModel.m */,
-				868FC5761FF260C1002A0FC8 /* MJAssetModel.h */,
-				868FC5771FF260C1002A0FC8 /* MJAlbumsController.h */,
-				868FC5781FF260C1002A0FC8 /* MJImageManager.m */,
+				86905D9E1FF33DFB000DAFB3 /* Libs */,
+				86905D931FF33898000DAFB3 /* Controller */,
+				86905D8B1FF33898000DAFB3 /* Manager */,
+				86905D8E1FF33898000DAFB3 /* Model */,
+				86905D961FF33898000DAFB3 /* View */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		86905D8B1FF33898000DAFB3 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				86905D8C1FF33898000DAFB3 /* MJImageManager.h */,
+				86905D8D1FF33898000DAFB3 /* MJImageManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		86905D8E1FF33898000DAFB3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86905D8F1FF33898000DAFB3 /* MJAlbumModel.h */,
+				86905D901FF33898000DAFB3 /* MJAssetModel.m */,
+				86905D911FF33898000DAFB3 /* MJAlbumModel.m */,
+				86905D921FF33898000DAFB3 /* MJAssetModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86905D931FF33898000DAFB3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				86905D951FF33898000DAFB3 /* MJAlbumsController.h */,
+				86905D941FF33898000DAFB3 /* MJAlbumsController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		86905D961FF33898000DAFB3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				86905D9B1FF338C3000DAFB3 /* AlbumsCell.h */,
+				86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		86905D9E1FF33DFB000DAFB3 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				86905D9F1FF33DFB000DAFB3 /* UIView+Sugar.h */,
+				86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */,
+			);
+			path = Libs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,12 +220,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				868FC57C1FF260C1002A0FC8 /* MJImageManager.m in Sources */,
+				86905D971FF33898000DAFB3 /* MJImageManager.m in Sources */,
+				86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */,
+				86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */,
+				86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */,
+				86905D9D1FF338C3000DAFB3 /* AlbumsCell.m in Sources */,
 				868FC55F1FF25FE9002A0FC8 /* ViewController.m in Sources */,
-				868FC5791FF260C1002A0FC8 /* MJAssetModel.m in Sources */,
-				868FC57A1FF260C1002A0FC8 /* MJAlbumsController.m in Sources */,
 				868FC56A1FF25FE9002A0FC8 /* main.m in Sources */,
-				868FC57B1FF260C1002A0FC8 /* MJAlbumModel.m in Sources */,
+				86905D991FF33898000DAFB3 /* MJAlbumModel.m in Sources */,
 				868FC55C1FF25FE9002A0FC8 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 76MM79XMJ9;
 				INFOPLIST_FILE = YYImagePickerController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Musjoy.YYImagePickerController;
@@ -324,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 76MM79XMJ9;
 				INFOPLIST_FILE = YYImagePickerController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Musjoy.YYImagePickerController;
