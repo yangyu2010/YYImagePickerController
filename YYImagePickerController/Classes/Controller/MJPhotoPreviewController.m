@@ -10,8 +10,10 @@
 #import "PhotoPreviewCell.h"
 #import "UIView+Sugar.h"
 #import "NSObject+Utils.h"
+#import "VideoPreviewCell.h"
 
 #define kPhotoPreviewCellID   @"kPhotoPreviewCellID"
+#define KVideoPreviewCellID   @"KVideoPreviewCellID"
 
 @interface MJPhotoPreviewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -76,6 +78,8 @@
     [self.view addSubview:_collectionPreview];
     
     [_collectionPreview registerClass:[PhotoPreviewCell class] forCellWithReuseIdentifier:kPhotoPreviewCellID];
+    [_collectionPreview registerClass:[VideoPreviewCell class] forCellWithReuseIdentifier:KVideoPreviewCellID];
+
 }
 
 - (void)viewWillLayoutSubviews {
@@ -128,7 +132,15 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PhotoPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoPreviewCellID forIndexPath:indexPath];
+    
+    MJAssetModel *model = _arrAssetModels[indexPath.item];
+    
+    AssetPreviewBaseCell *cell;
+    if (model.type == MJAssetModelMediaTypeVideo) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:KVideoPreviewCellID forIndexPath:indexPath];
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoPreviewCellID forIndexPath:indexPath];
+    }
     cell.model = _arrAssetModels[indexPath.item];
     return cell;
 }

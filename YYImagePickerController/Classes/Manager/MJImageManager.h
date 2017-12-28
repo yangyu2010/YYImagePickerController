@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MJAlbumModel.h"
 #import "MJAssetModel.h"
+#import <AVFoundation/AVFoundation.h>
 
 /**
  获取照片完成回调
@@ -33,14 +34,17 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
 
 @interface MJImageManager : NSObject
 
-
+#pragma mark- DefaultManager
 /// 单例
 + (instancetype)defaultManager;
 
+
+#pragma mark- ColumnNumber
 /// 默认4列, MJPhotoPickerController中的照片collectionView
 @property (nonatomic, assign) NSInteger columnNumber;
 
 
+#pragma mark- Authorization
 /// Return YES if Authorized 返回YES如果得到了授权
 - (BOOL)authorizationStatusAuthorized;
 
@@ -52,6 +56,7 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
 
 
 
+#pragma mark- Albums
 /**
  获取所有的相簿Model
 
@@ -70,7 +75,7 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
 
 
 
-
+#pragma mark- Assets
 /**
  获取当前照片模型的类型
 
@@ -121,8 +126,7 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
         networkAccessAllowed:(BOOL)networkAccessAllowed;
 
 
-
-//
+#pragma mark- Image Full
 /**
  Get full Image 获取原图
  该方法中，completion只会走一次
@@ -132,5 +136,18 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
  */
 - (void)getOriginalPhotoDataWithAsset:(PHAsset *)asset
                            completion:(void (^)(NSData *data, NSDictionary *info, BOOL isDegraded))completion;
+
+
+
+#pragma mark- Video
+
+/// Get video 获得视频
+- (void)getVideoWithAsset:(PHAsset *)asset
+               completion:(void (^)(AVPlayerItem * playerItem, NSDictionary * info))completion;
+
+- (void)getVideoWithAsset:(PHAsset *)asset
+          progressHandler:(void (^)(double progress, NSError *error, BOOL *stop, NSDictionary *info))progressHandler
+               completion:(void (^)(AVPlayerItem *, NSDictionary *))completion;
+
 
 @end

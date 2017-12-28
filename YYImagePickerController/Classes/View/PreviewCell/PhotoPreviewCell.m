@@ -31,7 +31,8 @@
 
 - (void)setModel:(MJAssetModel *)model {
     [super setModel:model];
-    _previewView.asset = model.asset;
+//    _previewView.asset = model.asset;
+    _previewView.model = model;
 }
 
 - (void)recoverSubviews {

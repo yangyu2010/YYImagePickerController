@@ -28,6 +28,7 @@
 		86C971241FF4D11C00A09261 /* PhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C9711F1FF4D11B00A09261 /* PhotoCollectionCell.m */; };
 		86C971251FF4D11C00A09261 /* AlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971221FF4D11B00A09261 /* AlbumsCell.m */; };
 		86C971281FF4D18D00A09261 /* AssetPreviewBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */; };
+		86C9712B1FF4EFC800A09261 /* VideoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C9712A1FF4EFC800A09261 /* VideoPreviewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		86C971231FF4D11B00A09261 /* AlbumsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumsCell.h; sourceTree = "<group>"; };
 		86C971261FF4D18D00A09261 /* AssetPreviewBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetPreviewBaseCell.h; sourceTree = "<group>"; };
 		86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetPreviewBaseCell.m; sourceTree = "<group>"; };
+		86C971291FF4EFC800A09261 /* VideoPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoPreviewCell.h; sourceTree = "<group>"; };
+		86C9712A1FF4EFC800A09261 /* VideoPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPreviewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,8 @@
 				86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */,
 				86C971151FF4D0F400A09261 /* PhotoPreviewCell.h */,
 				86C971191FF4D0F400A09261 /* PhotoPreviewCell.m */,
+				86C971291FF4EFC800A09261 /* VideoPreviewCell.h */,
+				86C9712A1FF4EFC800A09261 /* VideoPreviewCell.m */,
 				86C971171FF4D0F400A09261 /* PhotoPreviewView.h */,
 				86C9711A1FF4D0F400A09261 /* PhotoPreviewView.m */,
 				86C971161FF4D0F400A09261 /* ProgressView.h */,
@@ -296,6 +301,7 @@
 				86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */,
 				86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */,
 				86C971041FF49D9800A09261 /* MJPhotoPreviewController.m in Sources */,
+				86C9712B1FF4EFC800A09261 /* VideoPreviewCell.m in Sources */,
 				86C971071FF49F0900A09261 /* NSObject+Utils.m in Sources */,
 				86C971241FF4D11C00A09261 /* PhotoCollectionCell.m in Sources */,
 				86C971251FF4D11C00A09261 /* AlbumsCell.m in Sources */,
