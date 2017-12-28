@@ -17,10 +17,17 @@
 		86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D901FF33898000DAFB3 /* MJAssetModel.m */; };
 		86905D991FF33898000DAFB3 /* MJAlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D911FF33898000DAFB3 /* MJAlbumModel.m */; };
 		86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D941FF33898000DAFB3 /* MJAlbumsController.m */; };
-		86905D9D1FF338C3000DAFB3 /* AlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */; };
 		86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */; };
 		86905DA41FF34CD7000DAFB3 /* MJPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA31FF34CD7000DAFB3 /* MJPhotoPickerController.m */; };
-		86905DA71FF37759000DAFB3 /* PhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA61FF37759000DAFB3 /* PhotoCollectionCell.m */; };
+		86C971041FF49D9800A09261 /* MJPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971031FF49D9800A09261 /* MJPhotoPreviewController.m */; };
+		86C971071FF49F0900A09261 /* NSObject+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971061FF49F0900A09261 /* NSObject+Utils.m */; };
+		86C971131FF4CBD900A09261 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971121FF4CBD900A09261 /* UIImage+GIF.m */; };
+		86C9711B1FF4D0F400A09261 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971181FF4D0F400A09261 /* ProgressView.m */; };
+		86C9711C1FF4D0F400A09261 /* PhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971191FF4D0F400A09261 /* PhotoPreviewCell.m */; };
+		86C9711D1FF4D0F400A09261 /* PhotoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C9711A1FF4D0F400A09261 /* PhotoPreviewView.m */; };
+		86C971241FF4D11C00A09261 /* PhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C9711F1FF4D11B00A09261 /* PhotoCollectionCell.m */; };
+		86C971251FF4D11C00A09261 /* AlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971221FF4D11B00A09261 /* AlbumsCell.m */; };
+		86C971281FF4D18D00A09261 /* AssetPreviewBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,16 +49,30 @@
 		86905D921FF33898000DAFB3 /* MJAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAssetModel.h; sourceTree = "<group>"; };
 		86905D941FF33898000DAFB3 /* MJAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAlbumsController.m; sourceTree = "<group>"; };
 		86905D951FF33898000DAFB3 /* MJAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAlbumsController.h; sourceTree = "<group>"; };
-		86905D9B1FF338C3000DAFB3 /* AlbumsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumsCell.h; sourceTree = "<group>"; };
-		86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumsCell.m; sourceTree = "<group>"; };
 		86905D9F1FF33DFB000DAFB3 /* UIView+Sugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sugar.h"; sourceTree = "<group>"; };
 		86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sugar.m"; sourceTree = "<group>"; };
 		86905DA21FF34CD7000DAFB3 /* MJPhotoPickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPhotoPickerController.h; sourceTree = "<group>"; };
 		86905DA31FF34CD7000DAFB3 /* MJPhotoPickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPhotoPickerController.m; sourceTree = "<group>"; };
-		86905DA51FF37759000DAFB3 /* PhotoCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionCell.h; sourceTree = "<group>"; };
-		86905DA61FF37759000DAFB3 /* PhotoCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionCell.m; sourceTree = "<group>"; };
 		86905DA81FF38FA5000DAFB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		86905DA91FF38FA5000DAFB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		86C971021FF49D9800A09261 /* MJPhotoPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPhotoPreviewController.h; sourceTree = "<group>"; };
+		86C971031FF49D9800A09261 /* MJPhotoPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPhotoPreviewController.m; sourceTree = "<group>"; };
+		86C971051FF49F0900A09261 /* NSObject+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Utils.h"; sourceTree = "<group>"; };
+		86C971061FF49F0900A09261 /* NSObject+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Utils.m"; sourceTree = "<group>"; };
+		86C971111FF4CBD900A09261 /* UIImage+GIF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		86C971121FF4CBD900A09261 /* UIImage+GIF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
+		86C971151FF4D0F400A09261 /* PhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPreviewCell.h; sourceTree = "<group>"; };
+		86C971161FF4D0F400A09261 /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
+		86C971171FF4D0F400A09261 /* PhotoPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoPreviewView.h; sourceTree = "<group>"; };
+		86C971181FF4D0F400A09261 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
+		86C971191FF4D0F400A09261 /* PhotoPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPreviewCell.m; sourceTree = "<group>"; };
+		86C9711A1FF4D0F400A09261 /* PhotoPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoPreviewView.m; sourceTree = "<group>"; };
+		86C9711F1FF4D11B00A09261 /* PhotoCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionCell.m; sourceTree = "<group>"; };
+		86C971201FF4D11B00A09261 /* PhotoCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionCell.h; sourceTree = "<group>"; };
+		86C971221FF4D11B00A09261 /* AlbumsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumsCell.m; sourceTree = "<group>"; };
+		86C971231FF4D11B00A09261 /* AlbumsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumsCell.h; sourceTree = "<group>"; };
+		86C971261FF4D18D00A09261 /* AssetPreviewBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetPreviewBaseCell.h; sourceTree = "<group>"; };
+		86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetPreviewBaseCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +158,8 @@
 				86905D941FF33898000DAFB3 /* MJAlbumsController.m */,
 				86905DA21FF34CD7000DAFB3 /* MJPhotoPickerController.h */,
 				86905DA31FF34CD7000DAFB3 /* MJPhotoPickerController.m */,
+				86C971021FF49D9800A09261 /* MJPhotoPreviewController.h */,
+				86C971031FF49D9800A09261 /* MJPhotoPreviewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -144,10 +167,9 @@
 		86905D961FF33898000DAFB3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				86905D9B1FF338C3000DAFB3 /* AlbumsCell.h */,
-				86905D9C1FF338C3000DAFB3 /* AlbumsCell.m */,
-				86905DA51FF37759000DAFB3 /* PhotoCollectionCell.h */,
-				86905DA61FF37759000DAFB3 /* PhotoCollectionCell.m */,
+				86C971211FF4D11B00A09261 /* AlbumsCell */,
+				86C9711E1FF4D11B00A09261 /* PhotoCell */,
+				86C971141FF4D0F400A09261 /* PreviewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,8 +179,45 @@
 			children = (
 				86905D9F1FF33DFB000DAFB3 /* UIView+Sugar.h */,
 				86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */,
+				86C971051FF49F0900A09261 /* NSObject+Utils.h */,
+				86C971061FF49F0900A09261 /* NSObject+Utils.m */,
+				86C971111FF4CBD900A09261 /* UIImage+GIF.h */,
+				86C971121FF4CBD900A09261 /* UIImage+GIF.m */,
 			);
 			path = Libs;
+			sourceTree = "<group>";
+		};
+		86C971141FF4D0F400A09261 /* PreviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				86C971261FF4D18D00A09261 /* AssetPreviewBaseCell.h */,
+				86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */,
+				86C971151FF4D0F400A09261 /* PhotoPreviewCell.h */,
+				86C971191FF4D0F400A09261 /* PhotoPreviewCell.m */,
+				86C971171FF4D0F400A09261 /* PhotoPreviewView.h */,
+				86C9711A1FF4D0F400A09261 /* PhotoPreviewView.m */,
+				86C971161FF4D0F400A09261 /* ProgressView.h */,
+				86C971181FF4D0F400A09261 /* ProgressView.m */,
+			);
+			path = PreviewCell;
+			sourceTree = "<group>";
+		};
+		86C9711E1FF4D11B00A09261 /* PhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+				86C9711F1FF4D11B00A09261 /* PhotoCollectionCell.m */,
+				86C971201FF4D11B00A09261 /* PhotoCollectionCell.h */,
+			);
+			path = PhotoCell;
+			sourceTree = "<group>";
+		};
+		86C971211FF4D11B00A09261 /* AlbumsCell */ = {
+			isa = PBXGroup;
+			children = (
+				86C971221FF4D11B00A09261 /* AlbumsCell.m */,
+				86C971231FF4D11B00A09261 /* AlbumsCell.h */,
+			);
+			path = AlbumsCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,13 +295,20 @@
 				86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */,
 				86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */,
 				86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */,
-				86905DA71FF37759000DAFB3 /* PhotoCollectionCell.m in Sources */,
-				86905D9D1FF338C3000DAFB3 /* AlbumsCell.m in Sources */,
+				86C971041FF49D9800A09261 /* MJPhotoPreviewController.m in Sources */,
+				86C971071FF49F0900A09261 /* NSObject+Utils.m in Sources */,
+				86C971241FF4D11C00A09261 /* PhotoCollectionCell.m in Sources */,
+				86C971251FF4D11C00A09261 /* AlbumsCell.m in Sources */,
 				868FC55F1FF25FE9002A0FC8 /* ViewController.m in Sources */,
+				86C9711C1FF4D0F400A09261 /* PhotoPreviewCell.m in Sources */,
+				86C971281FF4D18D00A09261 /* AssetPreviewBaseCell.m in Sources */,
 				868FC56A1FF25FE9002A0FC8 /* main.m in Sources */,
 				86905D991FF33898000DAFB3 /* MJAlbumModel.m in Sources */,
+				86C9711B1FF4D0F400A09261 /* ProgressView.m in Sources */,
 				868FC55C1FF25FE9002A0FC8 /* AppDelegate.m in Sources */,
 				86905DA41FF34CD7000DAFB3 /* MJPhotoPickerController.m in Sources */,
+				86C9711D1FF4D0F400A09261 /* PhotoPreviewView.m in Sources */,
+				86C971131FF4CBD900A09261 /* UIImage+GIF.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,6 @@ CGSize _kAssetGridThumbnailSize;
 CGFloat _kScreenWidth;
 CGFloat _kScreenScale;
 
-
 #pragma mark- 单例
 
 /**
@@ -26,7 +25,8 @@ static dispatch_once_t onceToken;
 + (instancetype)defaultManager {
     dispatch_once(&onceToken, ^{
         manager = [[self alloc] init];
-        [manager configScreenWidth];
+        
+        // 设置默认4列
         [manager setColumnNumber:4];
     });
     return manager;
@@ -179,6 +179,32 @@ static dispatch_once_t onceToken;
 #pragma mark- 照片相关
 
 /**
+ 获取当前照片模型的类型
+ */
+- (MJAssetModelMediaType)getAssetModelMediaType:(MJAssetModel *)model {
+    MJAssetModelMediaType type = MJAssetModelMediaTypePhoto;
+    if (model.asset.mediaType == PHAssetMediaTypeVideo) {
+        type = MJAssetModelMediaTypeVideo;
+    }
+    else if (model.asset.mediaType == PHAssetMediaTypeAudio) {
+        type = MJAssetModelMediaTypeAudio;
+    }
+    else if (model.asset.mediaType == PHAssetMediaTypeImage) {
+        if (@available(iOS 9.1, *)) {
+            if (model.asset.mediaSubtypes == PHAssetMediaSubtypePhotoLive) {
+                type = MJAssetModelMediaTypeLivePhoto;
+            }
+        }
+        if ([[model.asset valueForKey:@"filename"] hasSuffix:@"GIF"]) {
+            type = MJAssetModelMediaTypePhotoGif;
+        }
+    }
+    
+    return type;
+}
+
+
+/**
  获取某个相簿下所有的照片
  */
 - (void)getAssetFromAlbum:(MJAlbumModel *)albumModel completion:(void (^)(NSArray <MJAssetModel *> *arrAssets))completion; {
@@ -268,6 +294,7 @@ static dispatch_once_t onceToken;
             options.progressHandler = ^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (progressHandler) {
+                        NSLog(@"progress %f", progress);
                         progressHandler(progress, error, stop, info);
                     }
                 });
@@ -288,6 +315,28 @@ static dispatch_once_t onceToken;
     }];
     
     return imageRequestID;
+}
+
+
+//
+/**
+ Get full Image 获取原图
+ 该方法中，completion只会走一次
+ */
+- (void)getOriginalPhotoDataWithAsset:(PHAsset *)asset
+                           completion:(void (^)(NSData *data, NSDictionary *info, BOOL isDegraded))completion {
+    
+    PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
+    option.networkAccessAllowed = YES;
+    option.resizeMode = PHImageRequestOptionsResizeModeFast;
+    [[PHImageManager defaultManager] requestImageDataForAsset:asset options:option resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
+        BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey]);
+        if (downloadFinined && imageData) {
+            if (completion) {
+                completion(imageData,info,NO);
+            }
+        }
+    }];
 }
 
 

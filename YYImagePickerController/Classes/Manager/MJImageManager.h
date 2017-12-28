@@ -15,7 +15,7 @@
 
  @param photo 图片对象
  @param info info
- @param isDegraded PHImageResultIsDegradedKey
+ @param isDegraded PHImageResultIsDegradedKey (YES是缩略图, NO原图)
  */
 typedef void(^GetPhotoWithAssetCompletion)(UIImage *photo, NSDictionary *info, BOOL isDegraded);
 
@@ -70,6 +70,15 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
 
 
 
+
+/**
+ 获取当前照片模型的类型
+
+ @param model MJAssetModel
+ @return MJAssetModelMediaType
+ */
+- (MJAssetModelMediaType)getAssetModelMediaType:(MJAssetModel *)model;
+
 /**
  获取某个相簿下所有的照片
 
@@ -80,23 +89,23 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
                completion:(void (^)(NSArray <MJAssetModel *> *arrAssets))completion;
 
 
-/// 根据Asset来获取照片
+/// 根据Asset来获取照片 无
 - (int32_t)getPhotoWithAsset:(PHAsset *)asset
                   completion:(GetPhotoWithAssetCompletion)completion;
 
-/// 根据Asset来获取照片
+/// 根据Asset来获取照片, 有photoWidth
 - (int32_t)getPhotoWithAsset:(PHAsset *)asset
                   photoWidth:(CGFloat)photoWidth
                   completion:(GetPhotoWithAssetCompletion)completion;
 
-/// 根据Asset来获取照片
+/// 根据Asset来获取照片, 有Progress回调
 - (int32_t)getPhotoWithAsset:(PHAsset *)asset
                   completion:(GetPhotoWithAssetCompletion)completion
              progressHandler:(GetPhotoWithAssetProgressHandler)progressHandler
         networkAccessAllowed:(BOOL)networkAccessAllowed;
 
 /**
- 根据Asset来获取照片
+ 根据Asset来获取照片, 有photoWidth, 有Progress回调
 
  @param asset Asset
  @param photoWidth 宽高
@@ -112,5 +121,16 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
         networkAccessAllowed:(BOOL)networkAccessAllowed;
 
 
+
+//
+/**
+ Get full Image 获取原图
+ 该方法中，completion只会走一次
+
+ @param asset PHAsset
+ @param completion 完成回调
+ */
+- (void)getOriginalPhotoDataWithAsset:(PHAsset *)asset
+                           completion:(void (^)(NSData *data, NSDictionary *info, BOOL isDegraded))completion;
 
 @end

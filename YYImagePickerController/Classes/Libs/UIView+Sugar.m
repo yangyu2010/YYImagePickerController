@@ -91,12 +91,20 @@
     return CGRectGetMaxX(self.frame);
 }
 
+- (void)setCenterX:(CGFloat)centerX {
+    self.center = CGPointMake(centerX, self.center.y);
+}
+
 - (CGFloat)centerX {
     return CGRectGetMidX(self.frame);
 }
 
 - (CGFloat)centerY {
     return CGRectGetMidY(self.frame);
+}
+
+- (void)setCenterY:(CGFloat)centerY {
+    self.center = CGPointMake(self.center.x, centerY);
 }
 
 @end

@@ -9,6 +9,8 @@
 #import "MJPhotoPickerController.h"
 #import "PhotoCollectionCell.h"
 #import "MJImageManager.h"
+#import "NSObject+Utils.h"
+#import "MJPhotoPreviewController.h"
 
 #define kPhotoCollectionCellID      @"PhotoCollectionCell.h"
 
@@ -104,6 +106,14 @@
     PhotoCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCollectionCellID forIndexPath:indexPath];
     cell.model = _arrAssets[indexPath.item];
     return cell;
+}
+
+#pragma mark- Delegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    MJPhotoPreviewController *photoPreviewVc = [[MJPhotoPreviewController alloc] init];
+    photoPreviewVc.currentIndex = indexPath.item;
+    photoPreviewVc.arrAssetModels = _arrAssets.mutableCopy;
+    [self.navigationController pushViewController:photoPreviewVc animated:YES];
 }
 
 @end

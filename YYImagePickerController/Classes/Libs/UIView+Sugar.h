@@ -33,8 +33,8 @@
 @property (nonatomic, assign, readonly) CGFloat bottom;
 @property (nonatomic, assign, readonly) CGFloat right;
 
-@property (nonatomic, assign, readonly) CGFloat centerX;
-@property (nonatomic, assign, readonly) CGFloat centerY;
+@property (nonatomic, assign) CGFloat centerX;
+@property (nonatomic, assign) CGFloat centerY;
 
 
 @end

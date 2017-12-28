@@ -24,9 +24,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self viewConfig];
-        
-        /// mark 测试
-        self.imgViewPhoto.image = [UIImage imageNamed:@"default"];
+    
     }
     return self;
 }

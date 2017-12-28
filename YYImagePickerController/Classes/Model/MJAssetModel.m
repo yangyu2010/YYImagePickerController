@@ -8,6 +8,7 @@
 
 #import "MJAssetModel.h"
 #import <Photos/Photos.h>
+#import "MJImageManager.h"
 
 @implementation MJAssetModel
 
@@ -21,12 +22,11 @@
     MJAssetModel *model = [[MJAssetModel alloc] init];
     
     model.asset = asset;
-    model.type = [model getModelMediaType];
+    model.type = [[MJImageManager defaultManager] getAssetModelMediaType:model];
     if (model.type == MJAssetModelMediaTypeVideo) {
         if (!allowPickingVideo) {
             return nil;
         }
-        
         model.timeLength = [NSString stringWithFormat:@"%0.0f",asset.duration];
     }
 
@@ -35,30 +35,5 @@
 
 
 
-
-#pragma mark- Private
-
-/// 获取当前照片类型
-- (MJAssetModelMediaType)getModelMediaType {
-    MJAssetModelMediaType type = MJAssetModelMediaTypePhoto;
-    if (self.asset.mediaType == PHAssetMediaTypeVideo) {
-        type = MJAssetModelMediaTypeVideo;
-    }
-    else if (self.asset.mediaType == PHAssetMediaTypeAudio) {
-        type = MJAssetModelMediaTypeAudio;
-    }
-    else if (self.asset.mediaType == PHAssetMediaTypeImage) {
-        if (@available(iOS 9.1, *)) {
-            if (self.asset.mediaSubtypes == PHAssetMediaSubtypePhotoLive) {
-                type = MJAssetModelMediaTypeLivePhoto;
-            }
-        }
-        if ([[self.asset valueForKey:@"filename"] hasSuffix:@"GIF"]) {
-            type = MJAssetModelMediaTypePhotoGif;
-        }
-    }
-    
-    return type;
-}
 
 @end
