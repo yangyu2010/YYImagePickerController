@@ -55,7 +55,6 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
 - (void)requestAuthorizationWithCompletion:(void (^)(void))completion;
 
 
-
 #pragma mark- Albums
 /**
  获取所有的相簿Model

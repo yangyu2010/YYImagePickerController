@@ -278,36 +278,42 @@ static dispatch_once_t onceToken;
             image = result;
         }
         
-        BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey]);
+        BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] &&
+                                ![info objectForKey:PHImageErrorKey]);
         if (downloadFinined && result) {
             if (completion) {
                 completion(result,info,[[info objectForKey:PHImageResultIsDegradedKey] boolValue]);
             }
         }
         
-        // Download image from iCloud
+        // Download image from iCloud, 需要联网, Only WiFi的问题要注意
         if ([info objectForKey:PHImageResultIsInCloudKey] &&
                                                   !result &&
                                     networkAccessAllowed) {
             
             PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+            options.networkAccessAllowed = YES;
+            options.resizeMode = PHImageRequestOptionsResizeModeFast;
             options.progressHandler = ^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (progressHandler) {
-                        NSLog(@"progress %f", progress);
                         progressHandler(progress, error, stop, info);
                     }
                 });
             };
-            options.networkAccessAllowed = YES;
-            options.resizeMode = PHImageRequestOptionsResizeModeFast;
-            [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
-                UIImage *resultImage = [UIImage imageWithData:imageData scale:0.1];
+           
+            [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) { 
+//                UIImage *resultImage = [UIImage imageWithData:imageData scale:0.1];
+//                resultImage = [self scaleImage:resultImage toSize:imageSize];
+                
+                UIImage *resultImage = [UIImage imageWithData:imageData];
                 resultImage = [self scaleImage:resultImage toSize:imageSize];
                 if (!resultImage) {
                     resultImage = image;
                 }
-                if (completion) completion(resultImage,info,NO);
+                if (completion) {
+                    completion(resultImage,info,NO);
+                }
             }];
             
         }
@@ -330,7 +336,8 @@ static dispatch_once_t onceToken;
     option.networkAccessAllowed = YES;
     option.resizeMode = PHImageRequestOptionsResizeModeFast;
     [[PHImageManager defaultManager] requestImageDataForAsset:asset options:option resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
-        BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey]);
+        BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] &&
+                                ![info objectForKey:PHImageErrorKey]);
         if (downloadFinined && imageData) {
             if (completion) {
                 completion(imageData,info,NO);

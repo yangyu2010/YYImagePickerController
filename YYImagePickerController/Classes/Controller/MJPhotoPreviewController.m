@@ -11,9 +11,11 @@
 #import "UIView+Sugar.h"
 #import "NSObject+Utils.h"
 #import "VideoPreviewCell.h"
+#import "LivePhotoPreviewCell.h"
 
 #define kPhotoPreviewCellID   @"kPhotoPreviewCellID"
-#define KVideoPreviewCellID   @"KVideoPreviewCellID"
+#define kVideoPreviewCellID   @"KVideoPreviewCellID"
+#define kLivePhotoPreviewCellID     @"kLivePhotoPreviewCellID"
 
 @interface MJPhotoPreviewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -78,7 +80,10 @@
     [self.view addSubview:_collectionPreview];
     
     [_collectionPreview registerClass:[PhotoPreviewCell class] forCellWithReuseIdentifier:kPhotoPreviewCellID];
-    [_collectionPreview registerClass:[VideoPreviewCell class] forCellWithReuseIdentifier:KVideoPreviewCellID];
+    [_collectionPreview registerClass:[VideoPreviewCell class] forCellWithReuseIdentifier:kVideoPreviewCellID];
+    if (@available(iOS 9_1, *)) {
+        [_collectionPreview registerClass:[LivePhotoPreviewCell class] forCellWithReuseIdentifier:kLivePhotoPreviewCellID];
+    }
 
 }
 
@@ -137,8 +142,14 @@
     
     AssetPreviewBaseCell *cell;
     if (model.type == MJAssetModelMediaTypeVideo) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:KVideoPreviewCellID forIndexPath:indexPath];
-    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kVideoPreviewCellID forIndexPath:indexPath];
+    } else if (model.type == MJAssetModelMediaTypeLivePhoto) {
+        if (@available(iOS 9_1, *)) {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLivePhotoPreviewCellID forIndexPath:indexPath];
+        }
+    }
+    
+    else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoPreviewCellID forIndexPath:indexPath];
     }
     cell.model = _arrAssetModels[indexPath.item];

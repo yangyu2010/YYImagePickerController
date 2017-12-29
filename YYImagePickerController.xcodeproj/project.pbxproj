@@ -19,6 +19,7 @@
 		86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905D941FF33898000DAFB3 /* MJAlbumsController.m */; };
 		86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA01FF33DFB000DAFB3 /* UIView+Sugar.m */; };
 		86905DA41FF34CD7000DAFB3 /* MJPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86905DA31FF34CD7000DAFB3 /* MJPhotoPickerController.m */; };
+		869757DE1FF63693000820CD /* LivePhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 869757DD1FF63693000820CD /* LivePhotoPreviewCell.m */; };
 		86C971041FF49D9800A09261 /* MJPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971031FF49D9800A09261 /* MJPhotoPreviewController.m */; };
 		86C971071FF49F0900A09261 /* NSObject+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971061FF49F0900A09261 /* NSObject+Utils.m */; };
 		86C971131FF4CBD900A09261 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971121FF4CBD900A09261 /* UIImage+GIF.m */; };
@@ -56,6 +57,8 @@
 		86905DA31FF34CD7000DAFB3 /* MJPhotoPickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPhotoPickerController.m; sourceTree = "<group>"; };
 		86905DA81FF38FA5000DAFB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		86905DA91FF38FA5000DAFB3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		869757DC1FF63693000820CD /* LivePhotoPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LivePhotoPreviewCell.h; sourceTree = "<group>"; };
+		869757DD1FF63693000820CD /* LivePhotoPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivePhotoPreviewCell.m; sourceTree = "<group>"; };
 		86C971021FF49D9800A09261 /* MJPhotoPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPhotoPreviewController.h; sourceTree = "<group>"; };
 		86C971031FF49D9800A09261 /* MJPhotoPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPhotoPreviewController.m; sourceTree = "<group>"; };
 		86C971051FF49F0900A09261 /* NSObject+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Utils.h"; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 				86C971191FF4D0F400A09261 /* PhotoPreviewCell.m */,
 				86C971291FF4EFC800A09261 /* VideoPreviewCell.h */,
 				86C9712A1FF4EFC800A09261 /* VideoPreviewCell.m */,
+				869757DC1FF63693000820CD /* LivePhotoPreviewCell.h */,
+				869757DD1FF63693000820CD /* LivePhotoPreviewCell.m */,
 				86C971171FF4D0F400A09261 /* PhotoPreviewView.h */,
 				86C9711A1FF4D0F400A09261 /* PhotoPreviewView.m */,
 				86C971161FF4D0F400A09261 /* ProgressView.h */,
@@ -301,6 +306,7 @@
 				86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */,
 				86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */,
 				86C971041FF49D9800A09261 /* MJPhotoPreviewController.m in Sources */,
+				869757DE1FF63693000820CD /* LivePhotoPreviewCell.m in Sources */,
 				86C9712B1FF4EFC800A09261 /* VideoPreviewCell.m in Sources */,
 				86C971071FF49F0900A09261 /* NSObject+Utils.m in Sources */,
 				86C971241FF4D11C00A09261 /* PhotoCollectionCell.m in Sources */,
