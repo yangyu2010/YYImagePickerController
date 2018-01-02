@@ -20,7 +20,7 @@
 - (void)configSubviews {
 
     _livePhotoView = [[PHLivePhotoView alloc] initWithFrame:CGRectZero];
-    _livePhotoView.contentMode = UIViewContentModeScaleAspectFill;
+    _livePhotoView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:_livePhotoView];
 }
 

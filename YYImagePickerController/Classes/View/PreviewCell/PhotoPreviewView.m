@@ -75,7 +75,7 @@
     
     _imageView = [[UIImageView alloc] init];
     _imageView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
-    _imageView.contentMode = UIViewContentModeScaleAspectFill;
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
     _imageView.clipsToBounds = YES;
     [_imageContainerView addSubview:_imageView];
     
@@ -150,13 +150,13 @@
             self.imageView.image = photo;
             [self resizeSubviews];
             
-            // 再显示gif动图
-            [[MJImageManager defaultManager] getOriginalPhotoDataWithAsset:model.asset completion:^(NSData *data, NSDictionary *info, BOOL isDegraded) {
-                if (!isDegraded) {
-                    self.imageView.image = [UIImage animatedGIFWithData:data];
-                    [self resizeSubviews];
-                }
-            }];
+//             // 再显示gif动图
+//            [[MJImageManager defaultManager] getOriginalPhotoDataWithAsset:model.asset completion:^(NSData *data, NSDictionary *info, BOOL isDegraded) {
+//                if (!isDegraded) {
+//                    self.imageView.image = [UIImage animatedGIFWithData:data];
+//                    [self resizeSubviews];
+//                }
+//            }];
         } progressHandler:nil networkAccessAllowed:NO];
         
     } else {

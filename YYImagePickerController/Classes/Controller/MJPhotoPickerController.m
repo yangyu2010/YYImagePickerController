@@ -62,6 +62,7 @@
     _collectionPhoto.contentInset = UIEdgeInsetsMake(kPhotoCollectionCellMargin, kPhotoCollectionCellMargin, kPhotoCollectionCellMargin, kPhotoCollectionCellMargin);
     
     [_collectionPhoto registerClass:[PhotoCollectionCell class] forCellWithReuseIdentifier:kPhotoCollectionCellID];
+    
 }
 
 - (void)viewWillLayoutSubviews {

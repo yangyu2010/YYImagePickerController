@@ -44,7 +44,6 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [UIApplication sharedApplication].statusBarHidden = YES;
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -84,7 +83,18 @@
     if (@available(iOS 9_1, *)) {
         [_collectionPreview registerClass:[LivePhotoPreviewCell class] forCellWithReuseIdentifier:kLivePhotoPreviewCellID];
     }
+    
+    if (@available(iOS 11, *)) {
+        _collectionPreview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btn setTitle:@"Back" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(20, 20, 44, 44);
+    [btn addTarget:self action:@selector(actionCancle) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -130,6 +140,10 @@
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"photoPreviewCollectionViewDidScroll" object:nil];
 //}
 
+#pragma mark- Action
+- (void)actionCancle {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark- DataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
