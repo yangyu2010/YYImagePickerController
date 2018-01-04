@@ -150,13 +150,20 @@
             self.imageView.image = photo;
             [self resizeSubviews];
             
-//             // 再显示gif动图
-//            [[MJImageManager defaultManager] getOriginalPhotoDataWithAsset:model.asset completion:^(NSData *data, NSDictionary *info, BOOL isDegraded) {
-//                if (!isDegraded) {
+             // 再显示gif动图
+            [[MJImageManager defaultManager] getOriginalPhotoDataWithAsset:model.asset completion:^(NSData *data, NSDictionary *info, BOOL isDegraded) {
+                if (!isDegraded) {
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        UIImage *image = [UIImage animatedGIFWithData:data];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.imageView.image = image;
+                            [self resizeSubviews];
+                        });
+                    });
 //                    self.imageView.image = [UIImage animatedGIFWithData:data];
 //                    [self resizeSubviews];
-//                }
-//            }];
+                }
+            }];
         } progressHandler:nil networkAccessAllowed:NO];
         
     } else {
