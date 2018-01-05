@@ -25,7 +25,6 @@ static dispatch_once_t onceToken;
 + (instancetype)defaultManager {
     dispatch_once(&onceToken, ^{
         manager = [[self alloc] init];
-        
         // 设置默认4列
         [manager setColumnNumber:4];
     });
@@ -140,9 +139,15 @@ static dispatch_once_t onceToken;
             
             if (collection.assetCollectionSubtype ==
                 PHAssetCollectionSubtypeSmartAlbumUserLibrary) {
-                [arrAlbums insertObject:[MJAlbumModel modelWithResult:fetchResult name:collection.localizedTitle] atIndex:0];
+                MJAlbumModel *model = [MJAlbumModel modelWithResult:fetchResult name:collection.localizedTitle];
+                if (model) {
+                    [arrAlbums insertObject:model atIndex:0];
+                }
             } else {
-                [arrAlbums addObject:[MJAlbumModel modelWithResult:fetchResult name:collection.localizedTitle]];
+                MJAlbumModel *model = [MJAlbumModel modelWithResult:fetchResult name:collection.localizedTitle];
+                if (model) {
+                    [arrAlbums addObject:model];
+                }
             }
         }
     }
@@ -217,11 +222,10 @@ static dispatch_once_t onceToken;
     }
     
     NSMutableArray *arrPhoto = [NSMutableArray array];
-    
     PHFetchResult *fetchResult = albumModel.result;
     
-    [fetchResult enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MJAssetModel *model = [MJAssetModel modelWithAsset:obj allowPickingVideo:YES];
+    [fetchResult enumerateObjectsUsingBlock:^(id  _Nonnull asset, NSUInteger idx, BOOL * _Nonnull stop) {
+        MJAssetModel *model = [MJAssetModel modelWithAsset:asset];
         if (model) {
             [arrPhoto addObject:model];
         }
@@ -248,6 +252,9 @@ static dispatch_once_t onceToken;
 }
 
 - (int32_t)getPhotoWithAsset:(PHAsset *)asset photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *photo,NSDictionary *info,BOOL isDegraded))completion progressHandler:(void (^)(double progress, NSError *error, BOOL *stop, NSDictionary *info))progressHandler networkAccessAllowed:(BOOL)networkAccessAllowed {
+    
+    /// 测试代码
+    networkAccessAllowed = NO;
     
     CGSize imageSize;
     if (photoWidth < _kScreenWidth) {
@@ -302,10 +309,7 @@ static dispatch_once_t onceToken;
                 });
             };
            
-            [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) { 
-//                UIImage *resultImage = [UIImage imageWithData:imageData scale:0.1];
-//                resultImage = [self scaleImage:resultImage toSize:imageSize];
-                
+            [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
                 UIImage *resultImage = [UIImage imageWithData:imageData];
                 resultImage = [self scaleImage:resultImage toSize:imageSize];
                 if (!resultImage) {
@@ -339,9 +343,11 @@ static dispatch_once_t onceToken;
         BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] &&
                                 ![info objectForKey:PHImageErrorKey]);
         if (downloadFinined && imageData) {
-            if (completion) {
-                completion(imageData,info,NO);
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completion) {
+                    completion(imageData,info,NO);
+                }
+            });
         }
     }];
 }
@@ -349,27 +355,30 @@ static dispatch_once_t onceToken;
 #pragma mark- Video
 
 /// Get video 获得视频
-- (void)getVideoWithAsset:(PHAsset *)asset completion:(void (^)(AVPlayerItem * playerItem, NSDictionary * info))completion {
+- (void)getVideoWithAsset:(PHAsset *)asset
+               completion:(GetVideoWithAssetCompletion)completion {
     [self getVideoWithAsset:asset progressHandler:nil completion:completion];
 }
 
-- (void)getVideoWithAsset:(PHAsset *)asset progressHandler:(void (^)(double progress, NSError *error, BOOL *stop, NSDictionary *info))progressHandler completion:(void (^)(AVPlayerItem *, NSDictionary *))completion {
+- (void)getVideoWithAsset:(PHAsset *)asset
+          progressHandler:(GetOriginalAssetProgressHandler)progressHandler
+               completion:(GetVideoWithAssetCompletion)completion {
     PHVideoRequestOptions *option = [[PHVideoRequestOptions alloc] init];
     option.networkAccessAllowed = YES;
     option.progressHandler = ^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            
-            NSLog(@"progress %f", progress);
-            
             if (progressHandler) {
                 progressHandler(progress, error, stop, info);
             }
         });
     };
+    
     [[PHImageManager defaultManager] requestPlayerItemForVideo:asset options:option resultHandler:^(AVPlayerItem *playerItem, NSDictionary *info) {
-        if (completion) {
-            completion(playerItem,info);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(playerItem,info);
+            }
+        });
     }];
 }
 
@@ -400,4 +409,5 @@ static dispatch_once_t onceToken;
 
 
 
+                       
 @end

@@ -16,17 +16,17 @@
 /**
  类方法创建对象
  */
-+ (MJAssetModel *)modelWithAsset:(PHAsset *)asset
-               allowPickingVideo:(BOOL)allowPickingVideo {
++ (MJAssetModel *)modelWithAsset:(PHAsset *)asset {
+    
+    if (asset == nil) {
+        return nil;
+    }
     
     MJAssetModel *model = [[MJAssetModel alloc] init];
-    
     model.asset = asset;
+    
     model.type = [[MJImageManager defaultManager] getAssetModelMediaType:model];
     if (model.type == MJAssetModelMediaTypeVideo) {
-        if (!allowPickingVideo) {
-            return nil;
-        }
         model.timeLength = [NSString stringWithFormat:@"%0.0f",asset.duration];
     }
 

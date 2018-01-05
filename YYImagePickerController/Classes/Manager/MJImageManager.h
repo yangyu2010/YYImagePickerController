@@ -4,15 +4,24 @@
 //
 //  Created by Yang Yu on 2017/12/25.
 //  Copyright © 2017年 Yang Yu. All rights reserved.
-//  图片资源获取管理类
+//  图片视频资源获取管理类
+/**
+ 1. 获取缩略图时, 可以不连接网络, 直接获取不清楚的一个图片让用户选择就行了
+    还是看产品那边需要在APP里预览整个相册吧
+ 
+ 2. 高清图一定要联网获得, 这里的图片有可能是在iCloud里, 可以有progress回调
+ 
+ */
 
 #import <UIKit/UIKit.h>
 #import "MJAlbumModel.h"
 #import "MJAssetModel.h"
 #import <AVFoundation/AVFoundation.h>
 
+
+
 /**
- 获取照片完成回调
+ 获取Image完成回调
 
  @param photo 图片对象
  @param info info
@@ -22,14 +31,24 @@ typedef void(^GetPhotoWithAssetCompletion)(UIImage *photo, NSDictionary *info, B
 
 
 /**
- 获取照片从iCloud中下载的进度
+ 获取Video完成回调
+
+ @param item AVPlayerItem
+ @param userInfo userInfo
+ */
+typedef void(^GetVideoWithAssetCompletion)(AVPlayerItem *item, NSDictionary *userInfo);
+
+/**
+ 获取图片或者视频从iCloud中下载的进度
 
  @param progress 进度
  @param error error
  @param stop stop
  @param info info
  */
-typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error, BOOL *stop, NSDictionary *info);
+typedef void(^GetOriginalAssetProgressHandler)(double progress, NSError *error, BOOL *stop, NSDictionary *info);
+
+
 
 
 @interface MJImageManager : NSObject
@@ -105,7 +124,7 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
 /// 根据Asset来获取照片, 有Progress回调
 - (int32_t)getPhotoWithAsset:(PHAsset *)asset
                   completion:(GetPhotoWithAssetCompletion)completion
-             progressHandler:(GetPhotoWithAssetProgressHandler)progressHandler
+             progressHandler:(GetOriginalAssetProgressHandler)progressHandler
         networkAccessAllowed:(BOOL)networkAccessAllowed;
 
 /**
@@ -121,13 +140,14 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
 - (int32_t)getPhotoWithAsset:(PHAsset *)asset
                   photoWidth:(CGFloat)photoWidth
                   completion:(GetPhotoWithAssetCompletion)completion
-             progressHandler:(GetPhotoWithAssetProgressHandler)progressHandler
+             progressHandler:(GetOriginalAssetProgressHandler)progressHandler
         networkAccessAllowed:(BOOL)networkAccessAllowed;
 
 
 #pragma mark- Image Full
 /**
- Get full Image 获取原图
+ Get full Image 获取原图, 返回的是NSData
+ 这个方法我用在显示Gif图的时候
  该方法中，completion只会走一次
 
  @param asset PHAsset
@@ -142,11 +162,11 @@ typedef void(^GetPhotoWithAssetProgressHandler)(double progress, NSError *error,
 
 /// Get video 获得视频
 - (void)getVideoWithAsset:(PHAsset *)asset
-               completion:(void (^)(AVPlayerItem * playerItem, NSDictionary * info))completion;
+               completion:(GetVideoWithAssetCompletion)completion;
 
 - (void)getVideoWithAsset:(PHAsset *)asset
-          progressHandler:(void (^)(double progress, NSError *error, BOOL *stop, NSDictionary *info))progressHandler
-               completion:(void (^)(AVPlayerItem *, NSDictionary *))completion;
+          progressHandler:(GetOriginalAssetProgressHandler)progressHandler
+               completion:(GetVideoWithAssetCompletion)completion;
 
 
 @end

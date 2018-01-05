@@ -8,6 +8,7 @@
 
 #import "PhotoCollectionCell.h"
 #import "MJImageManager.h"
+#import <Photos/Photos.h>
 
 @interface PhotoCollectionCell ()
 
@@ -51,10 +52,17 @@
 - (void)setModel:(MJAssetModel *)model {
     _model = model;
     
+
     [[MJImageManager defaultManager] getPhotoWithAsset:model.asset photoWidth:self.contentView.bounds.size.width completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
         if (photo) {
             self.imgViewPhoto.image = photo;
         }
+        
+        // 当前图片存在iCloud里, 可以在ui上有表示
+        if (info[PHImageResultIsInCloudKey]) {
+            
+        }
+        
     }];
     
 }

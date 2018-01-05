@@ -153,13 +153,13 @@
              // 再显示gif动图
             [[MJImageManager defaultManager] getOriginalPhotoDataWithAsset:model.asset completion:^(NSData *data, NSDictionary *info, BOOL isDegraded) {
                 if (!isDegraded) {
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                        UIImage *image = [UIImage animatedGIFWithData:data];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            self.imageView.image = image;
-                            [self resizeSubviews];
-                        });
-                    });
+//                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                        UIImage *image = [UIImage animatedGIFWithData:data];
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            self.imageView.image = image;
+//                            [self resizeSubviews];
+//                        });
+//                    });
 //                    self.imageView.image = [UIImage animatedGIFWithData:data];
 //                    [self resizeSubviews];
                 }
@@ -172,6 +172,10 @@
 }
 
 - (void)setAsset:(PHAsset *)asset {
+    
+    /// 图片复用清空
+    self.imageView.image = nil;
+    
     if (_asset && self.imageRequestID) {
         [[PHImageManager defaultManager] cancelImageRequest:self.imageRequestID];
     }

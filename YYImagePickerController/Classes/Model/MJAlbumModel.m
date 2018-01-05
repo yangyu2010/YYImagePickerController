@@ -8,7 +8,7 @@
 
 #import "MJAlbumModel.h"
 #import <Photos/Photos.h>
-#import "MJImageManager.h"
+
 
 @implementation MJAlbumModel
 

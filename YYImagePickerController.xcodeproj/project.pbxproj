@@ -215,8 +215,8 @@
 		86C9711E1FF4D11B00A09261 /* PhotoCell */ = {
 			isa = PBXGroup;
 			children = (
-				86C9711F1FF4D11B00A09261 /* PhotoCollectionCell.m */,
 				86C971201FF4D11B00A09261 /* PhotoCollectionCell.h */,
+				86C9711F1FF4D11B00A09261 /* PhotoCollectionCell.m */,
 			);
 			path = PhotoCell;
 			sourceTree = "<group>";

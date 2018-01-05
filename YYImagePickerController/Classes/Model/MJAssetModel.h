@@ -37,11 +37,8 @@ typedef enum : NSUInteger {
  类方法创建对象
 
  @param asset PHAsset
- @param allowPickingVideo 是否可以加载视频,
-                          当前对象是视频, 则返回nil
  @return MJAssetModel
  */
-+ (MJAssetModel *)modelWithAsset:(PHAsset *)asset
-               allowPickingVideo:(BOOL)allowPickingVideo;
++ (MJAssetModel *)modelWithAsset:(PHAsset *)asset;
 
 @end
