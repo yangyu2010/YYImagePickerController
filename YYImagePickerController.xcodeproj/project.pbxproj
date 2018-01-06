@@ -30,6 +30,7 @@
 		86C971251FF4D11C00A09261 /* AlbumsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971221FF4D11B00A09261 /* AlbumsCell.m */; };
 		86C971281FF4D18D00A09261 /* AssetPreviewBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */; };
 		86C9712B1FF4EFC800A09261 /* VideoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C9712A1FF4EFC800A09261 /* VideoPreviewCell.m */; };
+		86D4F50E2000C72100639034 /* MJImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86D4F50D2000C72100639034 /* MJImagePickerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetPreviewBaseCell.m; sourceTree = "<group>"; };
 		86C971291FF4EFC800A09261 /* VideoPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoPreviewCell.h; sourceTree = "<group>"; };
 		86C9712A1FF4EFC800A09261 /* VideoPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPreviewCell.m; sourceTree = "<group>"; };
+		86D4F50C2000C72100639034 /* MJImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJImagePickerController.h; sourceTree = "<group>"; };
+		86D4F50D2000C72100639034 /* MJImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJImagePickerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 		86905D931FF33898000DAFB3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				86D4F50C2000C72100639034 /* MJImagePickerController.h */,
+				86D4F50D2000C72100639034 /* MJImagePickerController.m */,
 				86905D951FF33898000DAFB3 /* MJAlbumsController.h */,
 				86905D941FF33898000DAFB3 /* MJAlbumsController.m */,
 				86905DA21FF34CD7000DAFB3 /* MJPhotoPickerController.h */,
@@ -304,6 +309,7 @@
 				86905D971FF33898000DAFB3 /* MJImageManager.m in Sources */,
 				86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */,
 				86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */,
+				86D4F50E2000C72100639034 /* MJImagePickerController.m in Sources */,
 				86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */,
 				86C971041FF49D9800A09261 /* MJPhotoPreviewController.m in Sources */,
 				869757DE1FF63693000820CD /* LivePhotoPreviewCell.m in Sources */,

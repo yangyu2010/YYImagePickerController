@@ -23,6 +23,9 @@ typedef enum : NSUInteger {
 /// PHAsset
 @property (nonatomic, strong) PHAsset *asset;
 
+/// 当前asset唯一标识符
+@property (nonatomic, copy) NSString *localIdentifier;
+
 /// The select status of a photo, default is N
 @property (nonatomic, assign) BOOL isSelected;
 

@@ -22,8 +22,15 @@
         return nil;
     }
     
+    
+//    NSLog(@"burstIdentifier %@", asset.burstIdentifier);
+//    NSLog(@"localIdentifier %@", asset.localIdentifier);
+//    NSLog(@"-------------");
+    
+    
     MJAssetModel *model = [[MJAssetModel alloc] init];
     model.asset = asset;
+    model.localIdentifier = asset.localIdentifier;
     
     model.type = [[MJImageManager defaultManager] getAssetModelMediaType:model];
     if (model.type == MJAssetModelMediaTypeVideo) {

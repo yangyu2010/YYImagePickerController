@@ -14,33 +14,43 @@
 #define kAlbumsTableCellID    @"kMJAlbumsTableCellID"
 
 @interface MJAlbumsController () <UITableViewDelegate, UITableViewDataSource>
+{
+ 
+}
 
+
+
+/// 显示相册的table
 @property (nonatomic, strong) UITableView *tableAlbums;
 
-@property (nonatomic, strong) NSArray *arrAlbums;
+/// 相册数组
+//@property (nonatomic, strong) NSArray *arrAlbums;
 
 @end
 
 @implementation MJAlbumsController
 
+#pragma mark- Life circle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     [self viewConfig];
-    [self dataConfig];
+//    [self dataConfig];
     
 }
+
 
 #pragma mark- Data
 
 - (void)dataConfig {
     
-    [[MJImageManager defaultManager] authorizationStatusAuthorized];
+//    [[MJImageManager defaultManager] authorizationStatusAuthorized];
     
-    [[MJImageManager defaultManager] getAllAlbumsCompletion:^(NSArray<MJAlbumModel *> *arrAlbums) {
-        _arrAlbums = arrAlbums;
-        [_tableAlbums reloadData];
-    }];
+//    [[MJImageManager defaultManager] getAllAlbumsCompletion:^(NSArray<MJAlbumModel *> *arrAlbums) {
+//        _arrAlbums = arrAlbums;
+//        [_tableAlbums reloadData];
+//    }];
 }
 
 #pragma mark- View
@@ -55,6 +65,7 @@
     [_tableAlbums registerClass:[AlbumsCell class] forCellReuseIdentifier:kAlbumsTableCellID];
     [self.view addSubview:_tableAlbums];
     
+    self.title = @"Photos";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancle" style:UIBarButtonItemStyleDone target:self action:@selector(actionCancle)];
 }
 
@@ -64,7 +75,15 @@
     _tableAlbums.frame = self.view.bounds;
 }
 
+#pragma mark- Set
+- (void)setArrAllAlbums:(NSArray<MJAlbumModel *> *)arrAllAlbums {
+    _arrAllAlbums = arrAllAlbums;
+    
+    [_tableAlbums reloadData];
+}
+
 #pragma mark- Action
+/// 返回
 - (void)actionCancle {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -72,12 +91,12 @@
 #pragma mark- DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _arrAlbums.count;
+    return _arrAllAlbums.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AlbumsCell *cell = [tableView dequeueReusableCellWithIdentifier:kAlbumsTableCellID forIndexPath:indexPath];
-    cell.model = _arrAlbums[indexPath.item];
+    cell.model = _arrAllAlbums[indexPath.item];
     return cell;
 }
 
@@ -86,7 +105,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MJPhotoPickerController *picker = [[MJPhotoPickerController alloc] init];
-    picker.modelAlbum = _arrAlbums[indexPath.item];
+    picker.modelAlbum = _arrAllAlbums[indexPath.item];
     [self.navigationController pushViewController:picker animated:YES];
 }
 
