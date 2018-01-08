@@ -7,7 +7,7 @@
 //  选中照片页面
 
 #import <UIKit/UIKit.h>
-#import "MJAlbumModel.h"
+@class MJAlbumModel;
 
 @interface MJPhotoPickerController : UIViewController
 

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MJAssetModel.h"
+//@class PhotoCollectionCell;
+//
+//@protocol PhotoCollectionCellDelegate <NSObject>
+//
+//- (void)photoCollectionCell:(PhotoCollectionCell *)cell
+//                didSelected:(BOOL)isSelected;
+//
+//@end
 
 @interface PhotoCollectionCell : UICollectionViewCell
 

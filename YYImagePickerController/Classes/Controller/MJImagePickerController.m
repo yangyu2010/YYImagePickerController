@@ -42,18 +42,15 @@
         _maxImagesCount = maxImagesCount;
         _columnNumber = columnNumber;
         _pushPhotoPickerVc = pushPhotoPickerVc;
-        
-//        self.view.backgroundColor = [UIColor whiteColor];
-        
+
         if (![[MJImageManager defaultManager] authorizationStatusAuthorized]) {
             /// 当前未授权
             self.lblNoAuthorized.frame = CGRectMake(0, 100, 150, 50);
             self.btnNoAuthorized.frame = CGRectMake(0, 150, 150, 50);
             [self.view addSubview:self.lblNoAuthorized];
             [self.view addSubview:self.btnNoAuthorized];
-            
-            _timerNoAuthorized = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(actionObserveAuthrizationStatusChange) userInfo:nil repeats:YES];
-            
+
+            _timerNoAuthorized = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(actionObserveAuthrizationStatusChange) userInfo:nil repeats:YES];
         } else {
             [self actionPushToPhotoPickerVc];
         }
@@ -65,6 +62,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.arrSelectedModels = [[NSMutableArray alloc] init];
+}
+
+- (void)dealloc {
+    
+    NSLog(@"imagePicker dealloc");
+    
+    if (_timerNoAuthorized) {
+        [_timerNoAuthorized invalidate];
+        _timerNoAuthorized = nil;
+    }
 }
 
 #pragma mark- Action
@@ -76,6 +84,7 @@
 
 /// 监听相册授权状态
 - (void)actionObserveAuthrizationStatusChange {
+    
     if ([[MJImageManager defaultManager] authorizationStatusAuthorized]) {
         [self.lblNoAuthorized removeFromSuperview];
         [self.btnNoAuthorized removeFromSuperview];
@@ -85,6 +94,7 @@
     }
 }
 
+/// 默认跳到相机胶卷页面
 - (void)actionPushToPhotoPickerVc {
 
     if (_timerNoAuthorized) {
@@ -104,6 +114,15 @@
             vcAlbums.arrAllAlbums = arrAlbums.copy;
         }
     }];
+    
+}
+
+
+#pragma mark- Set
+
+- (void)setArrSelectedModels:(NSMutableArray *)arrSelectedModels {
+    _arrSelectedModels = arrSelectedModels;
+    
     
 }
 
@@ -131,5 +150,6 @@
     }
     return _lblNoAuthorized;
 }
+
 
 @end

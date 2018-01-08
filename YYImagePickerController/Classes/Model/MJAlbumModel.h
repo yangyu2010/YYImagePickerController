@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class PHFetchResult;
+@class MJAssetModel;
 
 @interface MJAlbumModel : NSObject
 
@@ -16,16 +17,14 @@
 @property (nonatomic, strong) NSString *name;               ///< The album name
 /// 照片的个数
 @property (nonatomic, assign) NSInteger count;              ///< Count of photos the album contain
-/// 相簿封面, 取最后一张照片
-//@property (nonatomic, strong) UIImage *albumIcon;
 /// 对应的result
 @property (nonatomic, strong) PHFetchResult *result;        ///< PHFetchResult <PHAsset>
 
 
 /// 相簿里AssetModel
-@property (nonatomic, strong) NSArray *models;
-/// 选中的model
-@property (nonatomic, strong) NSArray *selectedModels;
+@property (nonatomic, strong) NSArray <MJAssetModel *> *arrModels;
+/// 选中的model, 有可能选中的, 当前相簿里没有
+@property (nonatomic, strong) NSArray <MJAssetModel *> *arrSelectedModels;
 /// 选中的个数
 @property (nonatomic, assign) NSUInteger selectedCount;
 

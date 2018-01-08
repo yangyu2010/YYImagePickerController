@@ -85,6 +85,8 @@
     [[MJImageManager defaultManager] getPostImageWithAlbumModel:model completion:^(UIImage *image) {
         self.imgViewPoster.image = image;
     }];
+    
+    self.lblSelectedCount.text = [NSString stringWithFormat:@"%ld", model.selectedCount];
 }
 
 #pragma mark- Get

@@ -31,8 +31,9 @@
     MJAssetModel *model = [[MJAssetModel alloc] init];
     model.asset = asset;
     model.localIdentifier = asset.localIdentifier;
-    
     model.type = [[MJImageManager defaultManager] getAssetModelMediaType:model];
+    model.isSelected = NO;
+
     if (model.type == MJAssetModelMediaTypeVideo) {
         model.timeLength = [NSString stringWithFormat:@"%0.0f",asset.duration];
     }

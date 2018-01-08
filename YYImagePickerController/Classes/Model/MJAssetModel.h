@@ -26,14 +26,15 @@ typedef enum : NSUInteger {
 /// 当前asset唯一标识符
 @property (nonatomic, copy) NSString *localIdentifier;
 
-/// The select status of a photo, default is N
-@property (nonatomic, assign) BOOL isSelected;
-
 /// Type
 @property (nonatomic, assign) MJAssetModelMediaType type;
 
 /// 视频时长
 @property (nonatomic, copy) NSString *timeLength;
+
+
+/// The select status of a photo, default is N
+@property (nonatomic, assign) BOOL isSelected;
 
 
 /**

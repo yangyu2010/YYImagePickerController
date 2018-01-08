@@ -11,6 +11,7 @@
 #import "MJImageManager.h"
 #import "NSObject+Utils.h"
 #import "MJPhotoPreviewController.h"
+#import "MJAlbumModel.h"
 
 #define kPhotoCollectionCellID      @"PhotoCollectionCell.h"
 
@@ -39,12 +40,15 @@
 
 - (void)dataConfig {
    
-    [[MJImageManager defaultManager] getAssetFromAlbum:_modelAlbum completion:^(NSArray<MJAssetModel *> *arrAssets) {
-        
-        _arrAssets = arrAssets;
-        
-        [self.collectionPhoto reloadData];
-    }];
+//    [[MJImageManager defaultManager] getAssetFromAlbum:_modelAlbum completion:^(NSArray<MJAssetModel *> *arrAssets) {
+//
+//        _arrAssets = arrAssets;
+//
+//        [self.collectionPhoto reloadData];
+//    }];
+    
+    _arrAssets = self.modelAlbum.arrModels;
+    
 }
 
 #pragma mark- View
@@ -93,8 +97,9 @@
 
 /// 滚到最底部
 - (void)actionCollectionViewScrollBottom {
-    
-    [_collectionPhoto scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_arrAssets.count - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+    if (_arrAssets.count > 1) {
+        [_collectionPhoto scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_arrAssets.count - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+    }
 }
 
 #pragma mark- DataSource
@@ -111,10 +116,17 @@
 
 #pragma mark- Delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    MJPhotoPreviewController *photoPreviewVc = [[MJPhotoPreviewController alloc] init];
-    photoPreviewVc.currentIndex = indexPath.item;
-    photoPreviewVc.arrAssetModels = _arrAssets.mutableCopy;
-    [self.navigationController pushViewController:photoPreviewVc animated:YES];
+    
+    MJAssetModel *model = _arrAssets[indexPath.item];
+    model.isSelected = !model.isSelected;
+    [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    
+    
+    
+//    MJPhotoPreviewController *photoPreviewVc = [[MJPhotoPreviewController alloc] init];
+//    photoPreviewVc.currentIndex = indexPath.item;
+//    photoPreviewVc.arrAssetModels = _arrAssets.mutableCopy;
+//    [self.navigationController pushViewController:photoPreviewVc animated:YES];
 }
 
 @end

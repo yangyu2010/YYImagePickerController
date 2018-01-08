@@ -20,6 +20,10 @@
                      pushPhotoPickerVc:(BOOL)pushPhotoPickerVc;
 
 
+/// 用户选择的所有照片或资源
+@property (nonatomic, strong) NSMutableArray *arrSelectedModels;
+
+
 @end
 
 

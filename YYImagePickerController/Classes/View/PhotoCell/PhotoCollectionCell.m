@@ -9,10 +9,19 @@
 #import "PhotoCollectionCell.h"
 #import "MJImageManager.h"
 #import <Photos/Photos.h>
+#import "UIView+Sugar.h"
 
 @interface PhotoCollectionCell ()
 
+/// Icon
 @property (nonatomic, strong) UIImageView *imgViewPhoto;
+
+/// 背景
+@property (nonatomic, strong) UIView *viewBg;
+
+/// 选中对勾
+@property (nonatomic, strong) UIImageView *imageViewSelected;
+
 
 @end
 
@@ -34,12 +43,18 @@
 #pragma mark- View
 - (void)viewConfig {
     [self.contentView addSubview:self.imgViewPhoto];
+    [self.contentView addSubview:self.viewBg];
+    self.viewBg.hidden = YES;
+    [self.contentView addSubview:self.imageViewSelected];
+    self.imageViewSelected.hidden = YES;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
     self.imgViewPhoto.frame = self.contentView.bounds;
+    self.viewBg.frame = self.contentView.bounds;
+    self.imageViewSelected.frame = CGRectMake(self.contentView.width - self.imageViewSelected.image.size.width, 0, self.imageViewSelected.image.size.width, self.imageViewSelected.image.size.height);
 }
 
 #pragma mark- Data
@@ -52,7 +67,6 @@
 - (void)setModel:(MJAssetModel *)model {
     _model = model;
     
-
     [[MJImageManager defaultManager] getPhotoWithAsset:model.asset photoWidth:self.contentView.bounds.size.width completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
         if (photo) {
             self.imgViewPhoto.image = photo;
@@ -62,9 +76,10 @@
         if (info[PHImageResultIsInCloudKey]) {
             
         }
-        
     }];
     
+    self.viewBg.hidden = !model.isSelected;
+    self.imageViewSelected.hidden = !model.isSelected;
 }
 
 #pragma mark- Get
@@ -77,5 +92,21 @@
     return _imgViewPhoto;
 }
 
+- (UIView *)viewBg {
+    if (_viewBg == nil) {
+        _viewBg = [[UIView alloc] init];
+        _viewBg.backgroundColor = [UIColor blackColor];
+        _viewBg.alpha = 0.6;
+    }
+    return _viewBg;
+}
+
+- (UIImageView *)imageViewSelected {
+    if (_imageViewSelected == nil) {
+        _imageViewSelected = [[UIImageView alloc] init];
+        _imageViewSelected.image = [UIImage imageNamed:@"photo_sel_previewVc"];
+    }
+    return _imageViewSelected;
+}
 
 @end
