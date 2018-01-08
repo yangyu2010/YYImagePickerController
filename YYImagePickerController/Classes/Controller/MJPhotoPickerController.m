@@ -78,7 +78,7 @@
     _viewBottomTool = [[PhotoPickerToolView alloc] init];
     _viewBottomTool.delegate = self;
     [self.view addSubview:_viewBottomTool];
-    
+    _viewBottomTool.countSelected = 0;
 }
 
 - (void)viewWillLayoutSubviews {

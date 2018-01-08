@@ -120,14 +120,14 @@
 - (void)setCountSelected:(NSUInteger)countSelected {
     _countSelected = countSelected;
     
-    self.lblCount.text = [NSString stringWithFormat:@"%ld", countSelected];
+    self.lblCount.text = [NSString stringWithFormat:@"%ld", (unsigned long)countSelected];
     [self layoutIfNeeded];
     [self setNeedsLayout];
     
     self.btnPreview.enabled = !(countSelected == 0);
     self.btnDone.enabled = !(countSelected == 0);
     
-//    [self.class showOscillatoryAnimationWithLayer:self.lblCount.layer];
+    [self.class showOscillatoryAnimationWithLayer:self.imgViewNumber.layer];
 }
 
 #pragma mark- Get
@@ -210,13 +210,13 @@
     NSNumber *animationScale1 = @(0.5);
     NSNumber *animationScale2 = @(1.15);
     
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
         [layer setValue:animationScale1 forKeyPath:@"transform.scale"];
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
             [layer setValue:animationScale2 forKeyPath:@"transform.scale"];
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
+            [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
                 [layer setValue:@(1.0) forKeyPath:@"transform.scale"];
             } completion:nil];
         }];
