@@ -78,6 +78,9 @@
         }
     }];
     
+    self.viewBg.hidden = YES;
+    self.imageViewSelected.hidden = YES;
+    
     self.viewBg.hidden = !model.isSelected;
     self.imageViewSelected.hidden = !model.isSelected;
 }

@@ -13,7 +13,6 @@
 
 @interface MJImagePickerController ()
 {
-    NSInteger _maxImagesCount;
     NSInteger _columnNumber;
     BOOL _pushPhotoPickerVc;
     
@@ -116,16 +115,6 @@
     }];
     
 }
-
-
-#pragma mark- Set
-
-- (void)setArrSelectedModels:(NSMutableArray *)arrSelectedModels {
-    _arrSelectedModels = arrSelectedModels;
-    
-    
-}
-
 
 #pragma mark- Getter
 

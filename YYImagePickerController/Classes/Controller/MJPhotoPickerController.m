@@ -12,6 +12,7 @@
 #import "NSObject+Utils.h"
 #import "MJPhotoPreviewController.h"
 #import "MJAlbumModel.h"
+#import "MJImagePickerController.h"
 
 #define kPhotoCollectionCellID      @"PhotoCollectionCell.h"
 
@@ -97,8 +98,26 @@
 
 /// 滚到最底部
 - (void)actionCollectionViewScrollBottom {
-    if (_arrAssets.count > 1) {
-        [_collectionPhoto scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_arrAssets.count - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+    if (_arrAssets.count == 0) {
+        return ;
+    }
+    [_collectionPhoto scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_arrAssets.count - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+}
+
+- (void)actionAddSelectedModelAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MJImagePickerController *navPicker = (MJImagePickerController *)self.navigationController;
+    if (![navPicker isKindOfClass:[MJImagePickerController class]]) {
+        return ;
+    }
+
+    MJAssetModel *model = _arrAssets[indexPath.item];
+    if (model.isSelected) {
+        [navPicker.arrSelectedModels addObject:model];
+    } else {
+        if ([navPicker.arrSelectedModels containsObject:model]) {
+            [navPicker.arrSelectedModels removeObject:model];
+        }
     }
 }
 
@@ -121,12 +140,7 @@
     model.isSelected = !model.isSelected;
     [collectionView reloadItemsAtIndexPaths:@[indexPath]];
     
-    
-    
-//    MJPhotoPreviewController *photoPreviewVc = [[MJPhotoPreviewController alloc] init];
-//    photoPreviewVc.currentIndex = indexPath.item;
-//    photoPreviewVc.arrAssetModels = _arrAssets.mutableCopy;
-//    [self.navigationController pushViewController:photoPreviewVc animated:YES];
+    [self actionAddSelectedModelAtIndexPath:indexPath];
 }
 
 @end

@@ -19,8 +19,15 @@
                               delegate:(id<ImagePickerControllerDelegate>)delegate
                      pushPhotoPickerVc:(BOOL)pushPhotoPickerVc;
 
+/**
+ 默认最大可选数, 如果是0则不限制
+ */
+@property (nonatomic, assign) NSInteger maxImagesCount;
 
-/// 用户选择的所有照片或资源
+/**
+ 用户选择的所有照片或资源
+ 最后返回给用户的是这个数组
+ */
 @property (nonatomic, strong) NSMutableArray *arrSelectedModels;
 
 

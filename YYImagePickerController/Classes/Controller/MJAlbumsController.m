@@ -10,6 +10,7 @@
 #import "MJImageManager.h"
 #import "AlbumsCell.h"
 #import "MJPhotoPickerController.h"
+#import "MJImagePickerController.h"
 
 #define kAlbumsTableCellID    @"kMJAlbumsTableCellID"
 
@@ -36,10 +37,15 @@
     [super viewDidLoad];
 
     [self viewConfig];
-//    [self dataConfig];
+    [self dataConfig];
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self actionRefreshTableView];
+}
 
 #pragma mark- Data
 
@@ -86,6 +92,21 @@
 /// 返回
 - (void)actionCancle {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+/// 更新table
+- (void)actionRefreshTableView {
+    if (!_tableAlbums) {
+        return ;
+    }
+    
+    MJImagePickerController *imagePickerVc = (MJImagePickerController *)self.navigationController;
+    if ([imagePickerVc isKindOfClass:[imagePickerVc class]]) {
+        for (MJAlbumModel *albumModel in self.arrAllAlbums) {
+            albumModel.arrSelectedModels = imagePickerVc.arrSelectedModels;
+        }
+    }
+    [_tableAlbums reloadData];
 }
 
 #pragma mark- DataSource
