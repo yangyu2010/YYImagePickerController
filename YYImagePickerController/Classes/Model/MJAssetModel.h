@@ -45,4 +45,13 @@ typedef enum : NSUInteger {
  */
 + (MJAssetModel *)modelWithAsset:(PHAsset *)asset;
 
+
+/**
+ 判断两个AssetModel是否是一个资源
+
+ @param model AssetModel
+ @return Yes or No
+ */
+- (BOOL)isSameAssetModel:(MJAssetModel *)model;
+
 @end

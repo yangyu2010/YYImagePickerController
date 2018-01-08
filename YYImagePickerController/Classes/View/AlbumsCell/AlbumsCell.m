@@ -48,6 +48,7 @@
 
 #pragma mark- View
 - (void)viewConfig {
+    //  UITableViewCellAccessoryDisclosureIndicator
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     [self.contentView addSubview:self.imgViewPoster];
@@ -80,13 +81,13 @@
     self.lblTitle.attributedText = nameString;
     
     self.lblSelectedCount.hidden = (model.selectedCount == 0);
-    self.lblSelectedCount.text = [NSString stringWithFormat:@"%ld", model.selectedCount];
+    self.lblSelectedCount.text = [NSString stringWithFormat:@"%ld", (unsigned long)model.selectedCount];
     
     [[MJImageManager defaultManager] getPostImageWithAlbumModel:model completion:^(UIImage *image) {
         self.imgViewPoster.image = image;
     }];
     
-    self.lblSelectedCount.text = [NSString stringWithFormat:@"%ld", model.selectedCount];
+    self.lblSelectedCount.text = [NSString stringWithFormat:@"%ld", (unsigned long)model.selectedCount];
 }
 
 #pragma mark- Get

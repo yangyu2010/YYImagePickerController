@@ -22,12 +22,6 @@
         return nil;
     }
     
-    
-//    NSLog(@"burstIdentifier %@", asset.burstIdentifier);
-//    NSLog(@"localIdentifier %@", asset.localIdentifier);
-//    NSLog(@"-------------");
-    
-    
     MJAssetModel *model = [[MJAssetModel alloc] init];
     model.asset = asset;
     model.localIdentifier = asset.localIdentifier;
@@ -42,6 +36,8 @@
 }
 
 
-
+- (BOOL)isSameAssetModel:(MJAssetModel *)model {
+    return [self.localIdentifier isEqualToString:model.localIdentifier];
+}
 
 @end

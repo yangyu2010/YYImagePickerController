@@ -7,10 +7,11 @@
 //  照片预览页面
 
 #import <UIKit/UIKit.h>
+@class MJAssetModel;
 
 @interface MJPhotoPreviewController : UIViewController
 
-@property (nonatomic, strong) NSMutableArray *arrAssetModels;
+@property (nonatomic, strong) NSMutableArray <MJAssetModel *> *arrAssetModels;
 
 @property (nonatomic, assign) NSInteger currentIndex;
 

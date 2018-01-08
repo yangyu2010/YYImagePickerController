@@ -56,18 +56,30 @@
 /// 对比当前数组下被选中的model
 - (void)checkSelectedModels {
     self.selectedCount = 0;
-    NSMutableArray *selectedAssets = [NSMutableArray array];
-    for (MJAssetModel *model in _arrSelectedModels) {
-        [selectedAssets addObject:model.asset];
-    }
-    
-    for (MJAssetModel *model in _arrModels) {
-        if ([selectedAssets containsObject:model.asset]) {
-            self.selectedCount ++;
-            model.isSelected = YES;
+
+    for (MJAssetModel *selectedModel in _arrSelectedModels) {
+        for (MJAssetModel *model in _arrModels) {
+            if ([selectedModel isSameAssetModel:model]) {
+                self.selectedCount ++;
+                model.isSelected = YES;
+            }
         }
+        
     }
     
+//    NSMutableArray *selectedAssets = [NSMutableArray array];
+//    for (MJAssetModel *model in _arrSelectedModels) {
+//        [selectedAssets addObject:model.asset];
+//    }
+//
+//    for (MJAssetModel *model in _arrModels) {
+//        if ([selectedAssets containsObject:model.asset]) {
+//            self.selectedCount ++;
+//            model.isSelected = YES;
+//        }
+//
+//    }
+
 }
 
 @end

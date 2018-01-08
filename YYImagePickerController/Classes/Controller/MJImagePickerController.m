@@ -74,6 +74,17 @@
     }
 }
 
+#pragma mark- Public
+
+/// 判断当前ImagePicker还能否继续添加资源
+- (BOOL)isImagePickerCanAddAssets {
+    if (_maxImagesCount == 0) {
+        return YES;
+    }
+    
+    return (self.arrSelectedModels.count >= self.maxImagesCount);
+}
+
 #pragma mark- Action
 
 /// App设置

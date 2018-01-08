@@ -22,14 +22,21 @@
 /**
  默认最大可选数, 如果是0则不限制
  */
-@property (nonatomic, assign) NSInteger maxImagesCount;
+@property (nonatomic, assign, readonly) NSInteger maxImagesCount;
 
 /**
  用户选择的所有照片或资源
  最后返回给用户的是这个数组
  */
-@property (nonatomic, strong) NSMutableArray *arrSelectedModels;
+@property (nonatomic, strong) NSMutableArray <MJAssetModel *> * arrSelectedModels;
 
+
+/**
+ 判断当前ImagePicker还能否继续添加资源, 有可能会有个数限制
+
+ @return Yes or No
+ */
+- (BOOL)isImagePickerCanAddAssets;
 
 @end
 

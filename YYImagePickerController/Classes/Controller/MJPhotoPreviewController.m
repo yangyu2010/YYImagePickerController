@@ -60,8 +60,8 @@
 #pragma mark- Data
 
 - (void)dataConfig {
-    
-   
+    // 默认是0
+    _currentIndex = 0;
 }
 
 #pragma mark- View
@@ -142,7 +142,8 @@
 
 #pragma mark- Action
 - (void)actionCancle {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark- DataSource
