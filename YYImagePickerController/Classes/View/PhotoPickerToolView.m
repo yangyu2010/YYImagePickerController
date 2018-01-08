@@ -87,8 +87,8 @@
 #pragma mark- Data
 
 - (void)dataConfig {
-    self.btnPreview.enabled = NO;
-    self.btnDone.enabled = NO;
+//    self.btnPreview.enabled = NO;
+//    self.btnDone.enabled = NO;
 }
 
 
