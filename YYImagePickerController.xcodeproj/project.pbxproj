@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		866C449C20046100008F1FE4 /* AssetPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 866C449A200460FF008F1FE4 /* AssetPreview.m */; };
+		866C44B820049867008F1FE4 /* AssetPreview+Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 866C44B520049866008F1FE4 /* AssetPreview+Video.m */; };
+		866C44B920049867008F1FE4 /* AssetPreview+Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 866C44B620049867008F1FE4 /* AssetPreview+Photo.m */; };
+		866C44BA20049867008F1FE4 /* AssetPreview+LivePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 866C44B720049867008F1FE4 /* AssetPreview+LivePhoto.m */; };
+		866C8F5020045879008B9CD7 /* AssetPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 866C8F4F20045879008B9CD7 /* AssetPreviewCell.m */; };
 		868FC55C1FF25FE9002A0FC8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC55B1FF25FE9002A0FC8 /* AppDelegate.m */; };
 		868FC55F1FF25FE9002A0FC8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 868FC55E1FF25FE9002A0FC8 /* ViewController.m */; };
 		868FC5621FF25FE9002A0FC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 868FC5601FF25FE9002A0FC8 /* Main.storyboard */; };
@@ -36,6 +41,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		866C449A200460FF008F1FE4 /* AssetPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetPreview.m; sourceTree = "<group>"; };
+		866C449B200460FF008F1FE4 /* AssetPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetPreview.h; sourceTree = "<group>"; };
+		866C44B220049866008F1FE4 /* AssetPreview+Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetPreview+Photo.h"; sourceTree = "<group>"; };
+		866C44B320049866008F1FE4 /* AssetPreview+LivePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetPreview+LivePhoto.h"; sourceTree = "<group>"; };
+		866C44B420049866008F1FE4 /* AssetPreview+Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AssetPreview+Video.h"; sourceTree = "<group>"; };
+		866C44B520049866008F1FE4 /* AssetPreview+Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetPreview+Video.m"; sourceTree = "<group>"; };
+		866C44B620049867008F1FE4 /* AssetPreview+Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetPreview+Photo.m"; sourceTree = "<group>"; };
+		866C44B720049867008F1FE4 /* AssetPreview+LivePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AssetPreview+LivePhoto.m"; sourceTree = "<group>"; };
+		866C8F4E20045879008B9CD7 /* AssetPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetPreviewCell.h; sourceTree = "<group>"; };
+		866C8F4F20045879008B9CD7 /* AssetPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetPreviewCell.m; sourceTree = "<group>"; };
+		866C8F5420045ED9008B9CD7 /* PhotoTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoTypes.h; sourceTree = "<group>"; };
 		868FC5571FF25FE9002A0FC8 /* YYImagePickerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YYImagePickerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		868FC55A1FF25FE9002A0FC8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		868FC55B1FF25FE9002A0FC8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -101,6 +117,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		866C4499200460FF008F1FE4 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				866C449B200460FF008F1FE4 /* AssetPreview.h */,
+				866C449A200460FF008F1FE4 /* AssetPreview.m */,
+				866C44B320049866008F1FE4 /* AssetPreview+LivePhoto.h */,
+				866C44B720049867008F1FE4 /* AssetPreview+LivePhoto.m */,
+				866C44B220049866008F1FE4 /* AssetPreview+Photo.h */,
+				866C44B620049867008F1FE4 /* AssetPreview+Photo.m */,
+				866C44B420049866008F1FE4 /* AssetPreview+Video.h */,
+				866C44B520049866008F1FE4 /* AssetPreview+Video.m */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
 		868FC54E1FF25FE9002A0FC8 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +189,7 @@
 		86905D8E1FF33898000DAFB3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				866C8F5420045ED9008B9CD7 /* PhotoTypes.h */,
 				86905D8F1FF33898000DAFB3 /* MJAlbumModel.h */,
 				86905D911FF33898000DAFB3 /* MJAlbumModel.m */,
 				86905D921FF33898000DAFB3 /* MJAssetModel.h */,
@@ -184,6 +216,7 @@
 		86905D961FF33898000DAFB3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				866C4499200460FF008F1FE4 /* Preview */,
 				86C971211FF4D11B00A09261 /* AlbumsCell */,
 				86C9711E1FF4D11B00A09261 /* PhotoCell */,
 				86C971141FF4D0F400A09261 /* PreviewCell */,
@@ -211,6 +244,8 @@
 		86C971141FF4D0F400A09261 /* PreviewCell */ = {
 			isa = PBXGroup;
 			children = (
+				866C8F4E20045879008B9CD7 /* AssetPreviewCell.h */,
+				866C8F4F20045879008B9CD7 /* AssetPreviewCell.m */,
 				86C971261FF4D18D00A09261 /* AssetPreviewBaseCell.h */,
 				86C971271FF4D18D00A09261 /* AssetPreviewBaseCell.m */,
 				86C971151FF4D0F400A09261 /* PhotoPreviewCell.h */,
@@ -318,19 +353,24 @@
 			files = (
 				86905D971FF33898000DAFB3 /* MJImageManager.m in Sources */,
 				86905D9A1FF33898000DAFB3 /* MJAlbumsController.m in Sources */,
+				866C44BA20049867008F1FE4 /* AssetPreview+LivePhoto.m in Sources */,
 				86905DA11FF33DFB000DAFB3 /* UIView+Sugar.m in Sources */,
 				86D4F50E2000C72100639034 /* MJImagePickerController.m in Sources */,
+				866C449C20046100008F1FE4 /* AssetPreview.m in Sources */,
 				86905D981FF33898000DAFB3 /* MJAssetModel.m in Sources */,
 				86C971041FF49D9800A09261 /* MJPhotoPreviewController.m in Sources */,
+				866C44B920049867008F1FE4 /* AssetPreview+Photo.m in Sources */,
 				869757DE1FF63693000820CD /* LivePhotoPreviewCell.m in Sources */,
 				86C9712B1FF4EFC800A09261 /* VideoPreviewCell.m in Sources */,
 				86C971071FF49F0900A09261 /* NSObject+Utils.m in Sources */,
 				86C971241FF4D11C00A09261 /* PhotoCollectionCell.m in Sources */,
 				86C971251FF4D11C00A09261 /* AlbumsCell.m in Sources */,
 				86BA763F2003635E0009B51A /* PhotoPickerToolView.m in Sources */,
+				866C44B820049867008F1FE4 /* AssetPreview+Video.m in Sources */,
 				868FC55F1FF25FE9002A0FC8 /* ViewController.m in Sources */,
 				86C9711C1FF4D0F400A09261 /* PhotoPreviewCell.m in Sources */,
 				86C971281FF4D18D00A09261 /* AssetPreviewBaseCell.m in Sources */,
+				866C8F5020045879008B9CD7 /* AssetPreviewCell.m in Sources */,
 				868FC56A1FF25FE9002A0FC8 /* main.m in Sources */,
 				86BA7642200372C60009B51A /* UILabel+Category.m in Sources */,
 				86905D991FF33898000DAFB3 /* MJAlbumModel.m in Sources */,

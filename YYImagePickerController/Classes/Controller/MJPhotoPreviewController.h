@@ -11,8 +11,10 @@
 
 @interface MJPhotoPreviewController : UIViewController
 
+/// 需要预览哪些图片
 @property (nonatomic, strong) NSMutableArray <MJAssetModel *> *arrAssetModels;
 
+/// 从哪个index开始预览, 默认是0
 @property (nonatomic, assign) NSInteger currentIndex;
 
 @end

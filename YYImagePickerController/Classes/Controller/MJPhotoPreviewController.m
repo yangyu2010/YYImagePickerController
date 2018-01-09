@@ -12,9 +12,10 @@
 #import "NSObject+Utils.h"
 #import "VideoPreviewCell.h"
 #import "LivePhotoPreviewCell.h"
+#import "AssetPreviewCell.h"
 
-#define kPhotoPreviewCellID   @"kPhotoPreviewCellID"
-#define kVideoPreviewCellID   @"KVideoPreviewCellID"
+#define kPhotoPreviewCellID         @"kPhotoPreviewCellID"
+#define kVideoPreviewCellID         @"KVideoPreviewCellID"
 #define kLivePhotoPreviewCellID     @"kLivePhotoPreviewCellID"
 
 @interface MJPhotoPreviewController () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -67,13 +68,16 @@
 #pragma mark- View
 
 - (void)viewConfig {
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 
     _collectionPreview = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
-    _collectionPreview.backgroundColor = [UIColor blackColor];
+    _collectionPreview.backgroundColor = [UIColor whiteColor];
     _collectionPreview.delegate = self;
     _collectionPreview.dataSource = self;
     _collectionPreview.pagingEnabled = YES;
     _collectionPreview.scrollsToTop = NO;
+    _collectionPreview.bounces = NO;
     _collectionPreview.showsHorizontalScrollIndicator = NO;
     _collectionPreview.contentOffset = CGPointMake(0, 0);
     [self.view addSubview:_collectionPreview];
@@ -84,6 +88,8 @@
         [_collectionPreview registerClass:[LivePhotoPreviewCell class] forCellWithReuseIdentifier:kLivePhotoPreviewCellID];
     }
     
+    [_collectionPreview registerClass:[AssetPreviewCell class] forCellWithReuseIdentifier:@"AssetPreviewCell"];
+
     if (@available(iOS 11, *)) {
         _collectionPreview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
@@ -155,20 +161,22 @@
     
     MJAssetModel *model = _arrAssetModels[indexPath.item];
     
-    AssetPreviewBaseCell *cell;
-    if (model.type == MJAssetModelMediaTypeVideo) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kVideoPreviewCellID forIndexPath:indexPath];
-    } else if (model.type == MJAssetModelMediaTypeLivePhoto) {
-        if (@available(iOS 9_1, *)) {
-            cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLivePhotoPreviewCellID forIndexPath:indexPath];
-        }
-    }
-    
-    else {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoPreviewCellID forIndexPath:indexPath];
-    }
-    cell.model = _arrAssetModels[indexPath.item];
+    AssetPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AssetPreviewCell" forIndexPath:indexPath];
+    cell.model = model;
     return cell;
+    
+//    AssetPreviewBaseCell *cell;
+//    if (model.type == MJAssetModelMediaTypeVideo) {
+//        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kVideoPreviewCellID forIndexPath:indexPath];
+//    } else if (model.type == MJAssetModelMediaTypeLivePhoto) {
+//        if (@available(iOS 9_1, *)) {
+//            cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLivePhotoPreviewCellID forIndexPath:indexPath];
+//        }
+//    } else {
+//        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoPreviewCellID forIndexPath:indexPath];
+//    }
+//    cell.model = _arrAssetModels[indexPath.item];
+//    return cell;
 }
 
 

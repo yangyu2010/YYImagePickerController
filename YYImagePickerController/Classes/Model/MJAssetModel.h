@@ -7,15 +7,8 @@
 //  一个照片模型, 可能是段视频
 
 #import <Foundation/Foundation.h>
+#import "PhotoTypes.h"
 @class PHAsset;
-
-typedef enum : NSUInteger {
-    MJAssetModelMediaTypePhoto = 0,
-    MJAssetModelMediaTypeLivePhoto,
-    MJAssetModelMediaTypePhotoGif,
-    MJAssetModelMediaTypeVideo,
-    MJAssetModelMediaTypeAudio
-} MJAssetModelMediaType;
 
 
 @interface MJAssetModel : NSObject
