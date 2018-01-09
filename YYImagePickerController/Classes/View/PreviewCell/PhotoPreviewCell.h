@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AssetPreviewBaseCell.h"
 #import "PhotoPreviewView.h"
+#import "PhotoPreviewView.h"
 
 @interface PhotoPreviewCell : AssetPreviewBaseCell
 

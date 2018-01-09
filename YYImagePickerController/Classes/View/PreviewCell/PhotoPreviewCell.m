@@ -14,7 +14,7 @@
 - (void)viewConfig {
     
     self.previewView = [[PhotoPreviewView alloc] initWithFrame:CGRectZero];
-    
+
     [self addSubview:self.previewView];
 }
 
@@ -25,7 +25,7 @@
 }
 
 - (void)recoverSubviews {
-    [_previewView recoverSubviews];
+    //[_previewView recoverSubviews];
 }
 
 #pragma mark- Set

@@ -33,14 +33,14 @@
 
 #pragma mark- Init
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self viewConfig];
-    }
-    return self;
-}
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (self) {
+//        [self viewConfig];
+//    }
+//    return self;
+//}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
