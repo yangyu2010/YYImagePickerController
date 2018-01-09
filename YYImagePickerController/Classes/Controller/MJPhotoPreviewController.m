@@ -40,14 +40,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [UIApplication sharedApplication].statusBarHidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [UIApplication sharedApplication].statusBarHidden = NO;
 }
@@ -101,22 +101,29 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+
+    /// self.view增加20, cell里 scrollViewview 宽度-20
+    /// 这样每个cell都有20px的像素
+    self.view.width += 20;
     
+    _collectionPreview.frame = CGRectMake(0, 0, self.view.width, self.view.height);
+
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)_collectionPreview.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.itemSize = CGSizeMake(self.view.width + 20, self.view.height);
+    layout.itemSize = CGSizeMake(self.view.width, self.view.height);
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
     [_collectionPreview setCollectionViewLayout:layout];
 
-    _collectionPreview.frame = CGRectMake(-10, 0, self.view.width + 20, self.view.height);
+    
+    NSLog(@"frame %@", NSStringFromCGRect(self.view.frame));
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
     if (_currentIndex) {
-        [_collectionPreview setContentOffset:CGPointMake((self.view.width + 20) * _currentIndex, 0) animated:NO];
+        [_collectionPreview setContentOffset:CGPointMake((self.view.width) * _currentIndex, 0) animated:NO];
     }
 }
 

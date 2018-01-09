@@ -124,7 +124,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    _scrollView.frame = CGRectMake(10, 0, self.width - 20, self.height);
+    _scrollView.frame = CGRectMake(0, 0, self.width - 20, self.height);
 
     CGFloat progressX = (self.width - kPhotoPreviewViewProgressWH) / 2;
     CGFloat progressY = (self.height - kPhotoPreviewViewProgressWH) / 2;
@@ -143,6 +143,8 @@
 - (void)setModel:(MJAssetModel *)model {
     _model = model;
     [_scrollView setZoomScale:1.0 animated:NO];
+    /// 图片复用清空
+    self.imageView.image = nil;
     
     if (model.type == MJAssetModelMediaTypePhotoGif) {
         // 先显示缩略图
@@ -172,9 +174,6 @@
 }
 
 - (void)setAsset:(PHAsset *)asset {
-    
-    /// 图片复用清空
-    self.imageView.image = nil;
     
     if (_asset && self.imageRequestID) {
         [[PHImageManager defaultManager] cancelImageRequest:self.imageRequestID];
