@@ -12,16 +12,26 @@
 
 @interface VideoPreviewCell ()
 
-@property (strong, nonatomic) AVPlayer *player;
-@property (strong, nonatomic) AVPlayerLayer *playerLayer;
-@property (strong, nonatomic) UIButton *playButton;
-@property (strong, nonatomic) UIImage *cover;
+@property (nonatomic, strong) AVPlayer *player;
+@property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) UIButton *playButton;
+//@property (nonatomic, strong) UIImage *cover;
 
 @end
 
 @implementation VideoPreviewCell
 
-- (void)configSubviews {
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewConfig {
+    [super viewConfig];
+    
+    self.contentView.x -=10;
+    self.contentView.backgroundColor = [UIColor redColor];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(pausePlayerAndShowNaviBar) name:UIApplicationWillResignActiveNotification
                                                object:nil];
@@ -51,23 +61,21 @@
         _player = nil;
     }
 
-    [[MJImageManager defaultManager] getPhotoWithAsset:self.model.asset completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
-        _cover = photo;
-    }];
+//    [[MJImageManager defaultManager] getPhotoWithAsset:self.model.asset completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
+//        _cover = photo;
+//    }];
     
     [[MJImageManager defaultManager] getVideoWithAsset:self.model.asset completion:^(AVPlayerItem *playerItem, NSDictionary *info) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _player = [AVPlayer playerWithPlayerItem:playerItem];
-            _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
-            _playerLayer.backgroundColor = [UIColor blackColor].CGColor;
-            _playerLayer.frame = self.bounds;
-            [self.layer addSublayer:_playerLayer];
-            [self configPlayButton];
-            [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(pausePlayerAndShowNaviBar) name:AVPlayerItemDidPlayToEndTimeNotification
-                                                       object:_player.currentItem];
-            
-        });
+        _player = [AVPlayer playerWithPlayerItem:playerItem];
+        _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+        _playerLayer.backgroundColor = [UIColor blackColor].CGColor;
+//        _playerLayer.frame = CGRectMake(0, 0, self.width, self.height);
+//        _playerLayer.frame = CGRectMake(100, 100, 100, 100);
+        [self.layer addSublayer:_playerLayer];
+        [self configPlayButton];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(pausePlayerAndShowNaviBar) name:AVPlayerItemDidPlayToEndTimeNotification
+                                                   object:_player.currentItem];
     }];
 
 }
@@ -101,20 +109,20 @@
 }
 
 - (void)pausePlayerAndShowNaviBar {
+    [_playButton setImage:[UIImage imageNamed:@"MMVideoPreviewPlay"] forState:UIControlStateNormal];
+
     if (_player.rate != 0.0) {
         [_player pause];
-        [_playButton setImage:[UIImage imageNamed:@"MMVideoPreviewPlay"] forState:UIControlStateNormal];
         if (self.singleTapGestureBlock) {
             self.singleTapGestureBlock();
         }
     }
 }
 
-#pragma mark- Dealloc
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-
+#pragma mark- Public
+/// 结束播放视频
+- (void)stopPlay {
+    [self pausePlayerAndShowNaviBar];
 }
 
 @end

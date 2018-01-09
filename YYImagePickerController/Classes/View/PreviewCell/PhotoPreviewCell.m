@@ -13,7 +13,7 @@
 
 - (void)viewConfig {
     
-    self.contentView.backgroundColor = [UIColor blackColor];
+    self.contentView.backgroundColor = [UIColor whiteColor];
     
     self.previewView = [[PhotoPreviewView alloc] initWithFrame:CGRectZero];
 

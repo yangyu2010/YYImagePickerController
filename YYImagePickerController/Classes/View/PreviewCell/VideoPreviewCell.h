@@ -11,4 +11,7 @@
 
 @interface VideoPreviewCell : AssetPreviewBaseCell
 
+/// 结束播放视频
+- (void)stopPlay;
+
 @end

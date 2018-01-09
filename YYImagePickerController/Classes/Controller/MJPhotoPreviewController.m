@@ -70,12 +70,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     _collectionPreview = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
-    _collectionPreview.backgroundColor = [UIColor whiteColor];
+    _collectionPreview.backgroundColor = [UIColor blackColor];
     _collectionPreview.delegate = self;
     _collectionPreview.dataSource = self;
     _collectionPreview.pagingEnabled = YES;
     _collectionPreview.scrollsToTop = NO;
-    _collectionPreview.bounces = NO;
+//    _collectionPreview.bounces = NO;
     _collectionPreview.showsHorizontalScrollIndicator = NO;
     _collectionPreview.contentOffset = CGPointMake(0, 0);
     [self.view addSubview:_collectionPreview];
@@ -115,8 +115,6 @@
     layout.minimumLineSpacing = 0;
     [_collectionPreview setCollectionViewLayout:layout];
 
-    
-    NSLog(@"frame %@", NSStringFromCGRect(self.view.frame));
 }
 
 - (void)viewDidLayoutSubviews {
@@ -155,6 +153,14 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([cell isKindOfClass:[VideoPreviewCell class]]) {
+        VideoPreviewCell *videoCell = (VideoPreviewCell *)cell;
+        [videoCell stopPlay];
+    }
+    
+}
 
 
 @end
