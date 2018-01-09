@@ -29,4 +29,7 @@
 
 @property (nonatomic, weak) id <PhotoPickerToolViewDelegate> delegate;
 
+/// 设置当前要选中所有
+- (void)setSelectedAll;
+
 @end

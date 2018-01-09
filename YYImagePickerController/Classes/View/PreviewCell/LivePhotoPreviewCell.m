@@ -52,28 +52,6 @@
         }
     }];
     
-//    [[MJImageManager defaultManager] getLivePhotoWithAsset:model.asset progressHandler:^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
-//
-//
-//
-//    } completion:^(PHLivePhoto *livePhoto, NSDictionary *info, BOOL isDegraded) {
-//        if (livePhoto) {
-//            self.livePhotoView.livePhoto = livePhoto;
-//        }
-//    }];
-    
-    
-//    PHLivePhotoRequestOptions *options = [[PHLivePhotoRequestOptions alloc] init];
-//    options.networkAccessAllowed = YES;
-//    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-//
-//    [[PHImageManager defaultManager] requestLivePhotoForAsset:model.asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeAspectFill options:options resultHandler:^(PHLivePhoto * _Nullable livePhoto, NSDictionary * _Nullable info) {
-//
-//        if (livePhoto) {
-//            self.livePhotoView.livePhoto = livePhoto;
-//        }
-//
-//    }];
 }
 
 @end

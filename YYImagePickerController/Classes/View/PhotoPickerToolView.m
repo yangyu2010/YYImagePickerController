@@ -115,6 +115,12 @@
     }
 }
 
+#pragma mark- Public
+/// 设置当前要选中所有
+- (void)setSelectedAll {
+    self.btnSelectAll.selected = YES;
+}
+
 #pragma mark- Set
 
 - (void)setCountSelected:(NSUInteger)countSelected {
