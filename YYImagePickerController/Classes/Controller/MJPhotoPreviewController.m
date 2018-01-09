@@ -12,7 +12,6 @@
 #import "NSObject+Utils.h"
 #import "VideoPreviewCell.h"
 #import "LivePhotoPreviewCell.h"
-#import "AssetPreviewCell.h"
 
 #define kPhotoPreviewCellID         @"kPhotoPreviewCellID"
 #define kVideoPreviewCellID         @"KVideoPreviewCellID"
@@ -37,7 +36,6 @@
     [self viewConfig];
     [self dataConfig];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeStatusBarOrientationNotification:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,8 +86,6 @@
         [_collectionPreview registerClass:[LivePhotoPreviewCell class] forCellWithReuseIdentifier:kLivePhotoPreviewCellID];
     }
     
-    [_collectionPreview registerClass:[AssetPreviewCell class] forCellWithReuseIdentifier:@"AssetPreviewCell"];
-
     if (@available(iOS 11, *)) {
         _collectionPreview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
@@ -122,33 +118,10 @@
     if (_currentIndex) {
         [_collectionPreview setContentOffset:CGPointMake((self.view.width + 20) * _currentIndex, 0) animated:NO];
     }
-    
-//    if (_offsetItemCount > 0) {
-//        UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)_collectionPreview.collectionViewLayout;
-//        CGFloat offsetX = _offsetItemCount * layout.itemSize.width;
-//        [_collectionPreview setContentOffset:CGPointMake(offsetX, 0)];
-//    }
 }
-
-#pragma mark - UIScrollViewDelegate
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat offSetWidth = scrollView.contentOffset.x;
-//    offSetWidth = offSetWidth +  ((self.view.width + 20) * 0.5);
-//
-//    NSInteger currentIndex = offSetWidth / (self.view.width + 20);
-//
-//    if (currentIndex < _arrAssetModels.count && _currentIndex != currentIndex) {
-//        _currentIndex = currentIndex;
-////        [self refreshNaviBarAndBottomBarState];
-//    }
-//
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"photoPreviewCollectionViewDidScroll" object:nil];
-//}
 
 #pragma mark- Action
 - (void)actionCancle {
-//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -161,31 +134,20 @@
     
     MJAssetModel *model = _arrAssetModels[indexPath.item];
     
-    AssetPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AssetPreviewCell" forIndexPath:indexPath];
-    cell.model = model;
+    AssetPreviewBaseCell *cell;
+    if (model.type == MJAssetModelMediaTypeVideo) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kVideoPreviewCellID forIndexPath:indexPath];
+    } else if (model.type == MJAssetModelMediaTypeLivePhoto) {
+        if (@available(iOS 9_1, *)) {
+            cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLivePhotoPreviewCellID forIndexPath:indexPath];
+        }
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoPreviewCellID forIndexPath:indexPath];
+    }
+    cell.model = _arrAssetModels[indexPath.item];
     return cell;
-    
-//    AssetPreviewBaseCell *cell;
-//    if (model.type == MJAssetModelMediaTypeVideo) {
-//        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kVideoPreviewCellID forIndexPath:indexPath];
-//    } else if (model.type == MJAssetModelMediaTypeLivePhoto) {
-//        if (@available(iOS 9_1, *)) {
-//            cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLivePhotoPreviewCellID forIndexPath:indexPath];
-//        }
-//    } else {
-//        cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoPreviewCellID forIndexPath:indexPath];
-//    }
-//    cell.model = _arrAssetModels[indexPath.item];
-//    return cell;
 }
 
-
-
-//#pragma mark- Notification
-//- (void)didChangeStatusBarOrientationNotification:(NSNotification *)noti {
-//    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)_collectionPreview.collectionViewLayout;
-//    _offsetItemCount = _collectionPreview.contentOffset.x / layout.itemSize.width;
-//}
 
 
 @end

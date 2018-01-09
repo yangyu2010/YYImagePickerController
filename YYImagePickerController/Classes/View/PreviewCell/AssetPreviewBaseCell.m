@@ -8,31 +8,53 @@
 
 #import "AssetPreviewBaseCell.h"
 
+#define kPhotoPreviewViewProgressWH     40.0f
+
 @implementation AssetPreviewBaseCell
+
+#pragma mark- Init
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor blackColor];
-        [self configSubviews];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photoPreviewCollectionViewDidScroll) name:@"photoPreviewCollectionViewDidScroll" object:nil];
+        [self viewConfig];
+        [self dataConfig];
     }
     return self;
 }
 
-- (void)configSubviews {
+#pragma mark- UI
+
+- (void)viewConfig {
+    self.backgroundColor = [UIColor blackColor];
+
+    [self.contentView addSubview:self.viewProgress];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.viewProgress.bounds = CGRectMake(0, 0, kPhotoPreviewViewProgressWH, kPhotoPreviewViewProgressWH);
+    self.viewProgress.center = self.contentView.center;
+}
+
+#pragma mark- Data
+
+- (void)dataConfig {
     
 }
 
-#pragma mark - Notification
 
-- (void)photoPreviewCollectionViewDidScroll {
-    
+#pragma mark- Get
+
+- (ProgressView *)viewProgress {
+    if (_viewProgress == nil) {
+        _viewProgress = [[ProgressView alloc] init];
+        _viewProgress.hidden = YES;
+    }
+    return _viewProgress;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 
 @end

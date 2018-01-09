@@ -12,8 +12,6 @@
 
 @interface PhotoPreviewCell : AssetPreviewBaseCell
 
-@property (nonatomic, copy) void (^imageProgressUpdateBlock)(double progress);
-
 @property (nonatomic, strong) PhotoPreviewView *previewView;
 
 - (void)recoverSubviews;

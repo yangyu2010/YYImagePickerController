@@ -22,7 +22,9 @@
 @implementation VideoPreviewCell
 
 - (void)configSubviews {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pausePlayerAndShowNaviBar) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(pausePlayerAndShowNaviBar) name:UIApplicationWillResignActiveNotification
+                                               object:nil];
 }
 
 - (void)configPlayButton {
@@ -61,7 +63,10 @@
             _playerLayer.frame = self.bounds;
             [self.layer addSublayer:_playerLayer];
             [self configPlayButton];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pausePlayerAndShowNaviBar) name:AVPlayerItemDidPlayToEndTimeNotification object:_player.currentItem];
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(pausePlayerAndShowNaviBar) name:AVPlayerItemDidPlayToEndTimeNotification
+                                                       object:_player.currentItem];
+            
         });
     }];
 
@@ -109,6 +114,7 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+
 }
 
 @end

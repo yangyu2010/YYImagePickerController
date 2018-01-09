@@ -17,7 +17,7 @@
 #import "MJAlbumModel.h"
 #import "MJAssetModel.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import <Photos/PHLivePhoto.h>
 
 
 /**
@@ -29,6 +29,8 @@
  */
 typedef void(^GetPhotoWithAssetCompletion)(UIImage *photo, NSDictionary *info, BOOL isDegraded);
 
+
+typedef void(^GetLivePhotoWithAssetCompletion)(PHLivePhoto *livePhoto, NSDictionary *info, BOOL isDegraded) PHOTOS_AVAILABLE_IOS_TVOS(9_1, 10_0);
 
 /**
  获取Video完成回调
@@ -141,8 +143,14 @@ typedef void(^GetOriginalAssetProgressHandler)(double progress, NSError *error, 
                   photoWidth:(CGFloat)photoWidth
                   completion:(GetPhotoWithAssetCompletion)completion
              progressHandler:(GetOriginalAssetProgressHandler)progressHandler
-        networkAccessAllowed:(BOOL)networkAccessAllowed;
+        networkAccessAllowed:(BOOL)networkAccessAllowed ;
 
+
+
+- (void)getLivePhotoWithAsset:(PHAsset *)asset
+                         size:(CGSize)size
+              progressHandler:(GetOriginalAssetProgressHandler)progressHandler
+                   completion:(GetLivePhotoWithAssetCompletion)completion PHOTOS_AVAILABLE_IOS_TVOS(9_1, 10_0);
 
 #pragma mark- Image Full
 /**

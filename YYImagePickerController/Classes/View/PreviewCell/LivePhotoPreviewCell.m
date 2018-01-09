@@ -17,7 +17,8 @@
 
 @implementation LivePhotoPreviewCell
 
-- (void)configSubviews {
+- (void)viewConfig {
+    [super viewConfig];
 
     _livePhotoView = [[PHLivePhotoView alloc] initWithFrame:CGRectZero];
     _livePhotoView.contentMode = UIViewContentModeScaleAspectFit;
@@ -32,24 +33,47 @@
 
 - (void)setModel:(MJAssetModel *)model {
     [super setModel:model];
-    //    _previewView.asset = model.asset;
-    
     
     CGSize size = CGSizeMake(self.bounds.size.width, self.bounds.size.height);
+
+    self.viewProgress.hidden = NO;
+    self.viewProgress.progress = 0;
     
-    
-    PHLivePhotoRequestOptions *options = [[PHLivePhotoRequestOptions alloc] init];
-    options.networkAccessAllowed = YES;
-    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-    
-    [[PHImageManager defaultManager] requestLivePhotoForAsset:model.asset targetSize:size contentMode:PHImageContentModeAspectFill options:options resultHandler:^(PHLivePhoto * _Nullable livePhoto, NSDictionary * _Nullable info) {
+    [[MJImageManager defaultManager] getLivePhotoWithAsset:model.asset size:size progressHandler:^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
         
+        self.viewProgress.progress = progress;
+        if (progress >= 1.0) {
+            self.viewProgress.hidden = YES;
+        }
+        
+    } completion:^(PHLivePhoto *livePhoto, NSDictionary *info, BOOL isDegraded) {
         if (livePhoto) {
             self.livePhotoView.livePhoto = livePhoto;
         }
-        
     }];
     
+//    [[MJImageManager defaultManager] getLivePhotoWithAsset:model.asset progressHandler:^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
+//
+//
+//
+//    } completion:^(PHLivePhoto *livePhoto, NSDictionary *info, BOOL isDegraded) {
+//        if (livePhoto) {
+//            self.livePhotoView.livePhoto = livePhoto;
+//        }
+//    }];
+    
+    
+//    PHLivePhotoRequestOptions *options = [[PHLivePhotoRequestOptions alloc] init];
+//    options.networkAccessAllowed = YES;
+//    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+//
+//    [[PHImageManager defaultManager] requestLivePhotoForAsset:model.asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeAspectFill options:options resultHandler:^(PHLivePhoto * _Nullable livePhoto, NSDictionary * _Nullable info) {
+//
+//        if (livePhoto) {
+//            self.livePhotoView.livePhoto = livePhoto;
+//        }
+//
+//    }];
 }
 
 @end

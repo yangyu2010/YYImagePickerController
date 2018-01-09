@@ -352,6 +352,35 @@ static dispatch_once_t onceToken;
     }];
 }
 
+#pragma mark- LivePhoto
+
+- (void)getLivePhotoWithAsset:(PHAsset *)asset
+                         size:(CGSize)size
+              progressHandler:(GetOriginalAssetProgressHandler)progressHandler
+                   completion:(GetLivePhotoWithAssetCompletion)completion PHOTOS_AVAILABLE_IOS_TVOS(9_1, 10_0) {
+    
+    PHLivePhotoRequestOptions *options = [[PHLivePhotoRequestOptions alloc] init];
+    options.networkAccessAllowed = YES;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    
+    options.progressHandler = ^(double progress, NSError * _Nullable error, BOOL * _Nonnull stop, NSDictionary * _Nullable info) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (progressHandler) {
+                progressHandler(progress, error, stop, info);
+            }
+        });
+    };
+    
+    [[PHImageManager defaultManager] requestLivePhotoForAsset:asset targetSize:size contentMode:PHImageContentModeAspectFill options:options resultHandler:^(PHLivePhoto * _Nullable livePhoto, NSDictionary * _Nullable info) {
+        if (livePhoto && !info[PHImageResultIsDegradedKey]) {
+            if(completion) {
+                completion(livePhoto, info, NO);
+            }
+        }
+    }];
+}
+
+
 #pragma mark- Video
 
 /// Get video 获得视频
