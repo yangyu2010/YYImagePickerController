@@ -7,6 +7,7 @@
 //
 
 #import "AssetPreviewBaseCell.h"
+#import "UIView+Sugar.h"
 
 #define kPhotoPreviewViewProgressWH     40.0f
 
@@ -33,6 +34,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    self.contentView.width -= 20;
     
     self.viewProgress.bounds = CGRectMake(0, 0, kPhotoPreviewViewProgressWH, kPhotoPreviewViewProgressWH);
     self.viewProgress.center = self.contentView.center;

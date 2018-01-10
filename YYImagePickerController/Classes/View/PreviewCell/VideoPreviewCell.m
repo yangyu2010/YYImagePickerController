@@ -29,13 +29,15 @@
 - (void)viewConfig {
     [super viewConfig];
     
-    self.contentView.x -=10;
-    self.contentView.backgroundColor = [UIColor redColor];
+//
+//    self.contentView.backgroundColor = [UIColor redColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(pausePlayerAndShowNaviBar) name:UIApplicationWillResignActiveNotification
                                                object:nil];
 }
+
+
 
 - (void)configPlayButton {
     if (_playButton) {
@@ -69,9 +71,9 @@
         _player = [AVPlayer playerWithPlayerItem:playerItem];
         _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
         _playerLayer.backgroundColor = [UIColor blackColor].CGColor;
-//        _playerLayer.frame = CGRectMake(0, 0, self.width, self.height);
-//        _playerLayer.frame = CGRectMake(100, 100, 100, 100);
         [self.layer addSublayer:_playerLayer];
+        [self setNeedsDisplay];
+        [self layoutIfNeeded];
         [self configPlayButton];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(pausePlayerAndShowNaviBar) name:AVPlayerItemDidPlayToEndTimeNotification
@@ -82,7 +84,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    _playerLayer.frame = self.bounds;
+    
+    _playerLayer.frame = CGRectMake(0, 0, self.width - 20, self.height);
+    
     _playButton.frame = CGRectMake(0, 64, self.width, self.height - 64 - 44);
 }
 
